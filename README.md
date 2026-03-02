@@ -35,6 +35,14 @@ Não estamos testando se você sabe usar ChatGPT. Estamos testando se você cons
 - **Envie evidências do seu processo.** A solução sozinha não basta. Precisamos ver como você chegou lá.
 - **Sem evidência de processo = desclassificado.**
 
+### Sobre o baseline
+
+Nós já rodamos cada challenge em múltiplos modelos de IA (Claude, GPT, Gemini) para gerar respostas de referência. **Esse é o nosso baseline.** Se você simplesmente colar o brief em qualquer IA e enviar o resultado, sua resposta vai ser parecida com algo que já temos.
+
+Parecido com o baseline não é suficiente. Esperamos que a sua entrega **supere substancialmente** o que a IA produz sozinha — em profundidade de análise, em julgamento, em qualidade de execução, ou em criatividade da solução.
+
+O valor de um AI Master não é saber pedir pra IA. É saber o que pedir, quando desconfiar, o que ajustar, e o que só um humano com contexto consegue fazer.
+
 ### O que NÃO estamos avaliando
 
 - Conhecimento de uma linguagem de programação específica
@@ -90,7 +98,7 @@ Pode, mas preferimos um bem feito do que dois superficiais.
 Sim. O ponto não é fazer sem IA. É usar IA melhor do que a média.
 
 **Se eu só colar o problema no ChatGPT e enviar a resposta?**
-Nós fazemos a mesma coisa. Se sua resposta for igual à nossa, você não agregou nada. Próximo.
+Nós já fizemos isso — com vários modelos. Temos as respostas. Se a sua for parecida, você não agregou nada. Próximo.
 
 **Quanto tempo tenho?**
 Recomendamos 4-6 horas. Envie quando estiver pronto — não há deadline fixo para o desafio (mas vagas são limitadas).
