@@ -638,6 +638,7 @@ Consolidar os três relatórios PDF gerados na etapa anterior (gargalos operacio
 **Contexto fornecido ao NotebookLLM:**
 
 > Upload dos três relatórios PDF:
+>
 > 1. `anlise_de_gargalos_operacionais_suporte_de_ti.pdf`
 > 2. `anlise_estratgica_de_satisfao_do_cliente_kpi_customer_satisfaction_rating.pdf`
 > 3. `quantificao_do_desperdcio_operacional_e_potencial_de_automao.pdf`
@@ -645,7 +646,7 @@ Consolidar os três relatórios PDF gerados na etapa anterior (gargalos operacio
 **Instrução principal:**
 
 > "Gere um plano estratégico de automação de suporte baseado nestes três relatórios. O plano deve responder:
-> 
+>
 > - **O que automatizar:** Processos com maior ROI e menor risco
 > - **O que NÃO automatizar:** Cenários que exigem intervenção humana
 > - **Como funcionaria na prática:** Arquitetura de implementação, fluxos de trabalho, regras de negócio"
@@ -657,9 +658,22 @@ Consolidar os três relatórios PDF gerados na etapa anterior (gargalos operacio
 **Link do documento:**  
 🔗 [Plano Estratégico de Automação - Google Docs](https://docs.google.com/document/d/1qkUPIMH8vld6oHtNg-Bf7nT-d9csb87_w93FN5vLAZ8/edit?usp=sharing)
 
+#### 📊 Material de Apresentação Executiva
+
+**Infográfico Visual:**
+- Infográfico síntese criado para comunicação executiva do projeto
+- Visualização dos principais insights e estratégia de automação
+
+**Apresentação de Slides:**
+- **Arquivo:** `Unlocking_IT_Support_Efficiency.pdf`
+- **Objetivo:** Apresentação completa do projeto para stakeholders
+- **Conteúdo:** Síntese executiva dos achados, estratégia de automação e roadmap de implementação
+- **Local:** `/assets/Unlocking_IT_Support_Efficiency.pdf`
+
 **Estrutura do plano gerado:**
 
 **1. O QUE AUTOMATIZAR (Quick Wins + Alto ROI)**
+
 - Tickets de acesso (100% automatizável)
 - Categorização e triagem inicial via NLP
 - Roteamento inteligente por canal/prioridade
@@ -667,6 +681,7 @@ Consolidar os três relatórios PDF gerados na etapa anterior (gargalos operacio
 - Alertas de SLA breach
 
 **2. O QUE NÃO AUTOMATIZAR (Zona de Risco)**
+
 - Reclamações de clientes insatisfeitos (CSAT < 3.0)
 - Solicitações de reembolso (requer análise de políticas)
 - Tickets críticos com histórico de escalação
@@ -674,6 +689,7 @@ Consolidar os três relatórios PDF gerados na etapa anterior (gargalos operacio
 - Situações que envolvem decisões de negócio
 
 **3. COMO FUNCIONARIA NA PRÁTICA**
+
 - Arquitetura de sistema proposta
 - Fluxos de trabalho detalhados
 - Regras de negócio e thresholds
@@ -681,12 +697,14 @@ Consolidar os três relatórios PDF gerados na etapa anterior (gargalos operacio
 - Métricas de validação e monitoramento
 
 **4. PRIORIZAÇÃO DE IMPLEMENTAÇÃO**
+
 - Fase 1: Automação de tickets de acesso (ROI imediato)
 - Fase 2: Triagem e roteamento inteligente
 - Fase 3: Respostas automáticas baseadas em histórico
 - Fase 4: Sistema de alertas preditivos
 
 **5. ESTIMATIVAS DE IMPACTO**
+
 - Redução de tempo de resolução
 - Economia operacional estimada
 - Melhoria de CSAT esperada
