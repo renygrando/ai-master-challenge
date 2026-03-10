@@ -446,6 +446,53 @@ Executar sanitização completa dos datasets usando Python via ChatGPT, hospedar
 3. Análises via Gemini + IA nativa Airtable
 4. Documentação de todos os artefatos
 
+#### Prompts do Airtable - Design do Dashboard
+
+**Prompt 1: Product Designer (Prototipagem da Interface)**
+
+> "Act as a Product Designer specialized in Business Intelligence. Create a 'Support Operations Command Center' interface in Portuguese (PT-BR) based on the two connected datasets.
+>
+> The interface must be divided into 3 distinct sections:
+>
+> 1. EXECUTIVE OVERVIEW (The "Health" of Support):
+> - Metric Cards: Show Average 'Customer Satisfaction Rating', Average 'Time to Resolution', and Total Tickets.
+> - Target Tracking: Compare current resolution times against a target of 24 hours.
+>
+> 2. BOTTLENECK & WASTE DETECTOR (The "Where we lose time" section):
+> - Heatmap or Bar Chart: 'Time to Resolution' grouped by 'Ticket Channel' and 'Ticket Priority'.
+> - List View: Filtered to show only "Critical" tickets that have been 'Open' for more than 48 hours.
+> - Formula Field: Calculate "Estimated Loss" (Time above average * $20/hour) and display as a total sum.
+>
+> 3. AI AUTOMATION PROTOTYPE (The "Working Solution" section):
+> - Topic Grouping: Use 'Topic_group' from Dataset 2 to show which areas (Access, Billing, Hardware) have the most repetitive tickets.
+> - AI Action Column: A field that uses 'Ticket Description' to suggest a 'Draft AI Response' or 'Automated Resolution' based on previous successful resolutions.
+> - ROI Projection: A chart showing how many hours can be saved if the top 3 'Topic_groups' are handled by an AI Agent.
+>
+> The tone should be professional, data-driven, and focused on "Actionable Insights"."
+
+**Prompt 2: BI Developer (Configuração Funcional)**
+
+> "Act as a Lead BI Developer configuring an Airtable Interface. Update the current 'Support Operations Command Center' dashboard using the exact insights from the recent data analysis.
+>
+> Configure the interface with the following sections and specific widgets:
+>
+> 1. EXECUTIVE SUMMARY & ROI (Top Section)
+> - Number Widget: "Monthly Waste Opportunity" hardcoded or calculated to show $128,395 (Based on 1,694 inefficient tickets).
+> - Number Widget: "Target CSAT SLA". Show a threshold of < 12 hours (Analysis proves CSAT drops below 3.0 after 12 hours).
+> - Pie Chart: "Volume by Top Categories". Show 'Hardware' (28.5%) and 'HR Support' (22.8%) as the dominant slices.
+>
+> 2. BOTTLENECK & FRICTION ZONES (Middle Section)
+> - Bar Chart: "Worst Resolution Times". Filter to show 'Refund request' + 'Chat' + 'High Priority' peaking at 11.37 hours.
+> - Line Chart or Scatter Plot: "Channel Inconsistency". Highlight 'Social Media' having the highest standard deviation (5.93h).
+> - Text/Notes Widget: "The 94% Rule". Add a strategic note stating: "94% of resolution time occurs AFTER the first response. The bottleneck is in internal approvals, not first touch."
+>
+> 3. AUTOMATION ACTION PLAN (Bottom Section)
+> - Grid/List View: "100% Automatable (Quick Wins)". Filter to show only tickets where 'topic_group' is 'Access' (Account access/unlocks).
+> - Grid/List View: "AI Triage Candidates". Filter to show 'Hardware' and 'HR Support' tickets that are currently open.
+> - Button/Action Field: Add a button labeled "Generate AI Resolution Draft" next to the 'Access' tickets to demonstrate a functional prototype.
+>
+> Make the layout dense but scannable, using red/yellow/green color coding for SLA breaches (above 11.37h is critical). The language of the interface text must be in Portuguese (PT-BR)."
+
 ### Saída Obtida
 
 #### 📊 Datasets Sanitizados
@@ -474,7 +521,8 @@ Executar sanitização completa dos datasets usando Python via ChatGPT, hospedar
 🔗 [Airtable - Support Redesign Base](https://airtable.com/appyQLnnOhn8YxI4A/pagWmPKMLotOzpqzG)
 
 **Visualização Embarcada:**
-> ⚠️ *Nota: Se o embed abaixo não aparecer, acesse diretamente pelo link acima*
+
+> ⚠️ _Nota: Se o embed abaixo não aparecer, acesse diretamente pelo link acima_
 
 <iframe class="airtable-embed" src="https://airtable.com/embed/appyQLnnOhn8YxI4A/shrodtwpKjKV6ltC7" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
 
