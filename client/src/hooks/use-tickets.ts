@@ -1,101 +1,76 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { api, buildUrl } from "@shared/routes";
-import { type InsertTicket, type UpdateTicketRequest } from "@shared/schema";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { queryClient, apiRequest } from "@/lib/queryClient";
+import type { Ticket } from "@shared/schema";
 
-export function useTickets(status?: string, category?: string) {
-  return useQuery({
-    queryKey: [api.tickets.list.path, { status, category }],
-    queryFn: async () => {
-      const url = new URL(api.tickets.list.path, window.location.origin);
-      if (status) url.searchParams.append("status", status);
-      if (category) url.searchParams.append("category", category);
-      
-      const res = await fetch(url.toString(), { credentials: "include" });
-      if (!res.ok) throw new Error("Failed to fetch tickets");
-      return api.tickets.list.responses[200].parse(await res.json());
-    },
+export function useTickets(status?: string) {
+  return useQuery<Ticket[]>({
+    queryKey: ["/api/tickets", status],
+    queryFn: () => fetch(`/api/tickets${status ? `?status=${status}` : ""}`, { credentials: "include" }).then(r => r.json()),
+  });
+}
+
+export function useMyTickets() {
+  return useQuery<Ticket[]>({
+    queryKey: ["/api/tickets/mine"],
+    queryFn: () => fetch("/api/tickets/mine", { credentials: "include" }).then(r => r.json()),
   });
 }
 
 export function useTicket(id: number) {
-  return useQuery({
-    queryKey: [api.tickets.get.path, id],
-    queryFn: async () => {
-      const url = buildUrl(api.tickets.get.path, { id });
-      const res = await fetch(url, { credentials: "include" });
-      if (res.status === 404) return null;
-      if (!res.ok) throw new Error("Failed to fetch ticket");
-      return api.tickets.get.responses[200].parse(await res.json());
-    },
+  return useQuery<Ticket>({
+    queryKey: ["/api/tickets", id],
+    queryFn: () => fetch(`/api/tickets/${id}`, { credentials: "include" }).then(r => r.json()),
+    enabled: !!id,
   });
 }
 
 export function useCreateTicket() {
-  const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async (data: InsertTicket) => {
-      const validated = api.tickets.create.input.parse(data);
-      const res = await fetch(api.tickets.create.path, {
-        method: api.tickets.create.method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(validated),
-        credentials: "include",
-      });
-      if (!res.ok) throw new Error("Failed to create ticket");
-      return api.tickets.create.responses[201].parse(await res.json());
+    mutationFn: (data: any) => apiRequest("POST", "/api/tickets", data).then(r => r.json()),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/tickets"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/tickets/mine"] });
     },
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: [api.tickets.list.path] }),
   });
 }
 
 export function useUpdateTicket() {
-  const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async ({ id, ...updates }: { id: number } & UpdateTicketRequest) => {
-      const validated = api.tickets.update.input.parse(updates);
-      const url = buildUrl(api.tickets.update.path, { id });
-      const res = await fetch(url, {
-        method: api.tickets.update.method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(validated),
-        credentials: "include",
-      });
-      if (!res.ok) throw new Error("Failed to update ticket");
-      return api.tickets.update.responses[200].parse(await res.json());
-    },
-    onSuccess: (_, { id }) => {
-      queryClient.invalidateQueries({ queryKey: [api.tickets.list.path] });
-      queryClient.invalidateQueries({ queryKey: [api.tickets.get.path, id] });
+    mutationFn: ({ id, ...data }: any) => apiRequest("PATCH", `/api/tickets/${id}`, data).then(r => r.json()),
+    onSuccess: (_data: any, vars: any) => {
+      queryClient.invalidateQueries({ queryKey: ["/api/tickets", vars.id] });
+      queryClient.invalidateQueries({ queryKey: ["/api/tickets"] });
     },
   });
 }
 
 export function useClassifyTicket() {
   return useMutation({
-    mutationFn: async (description: string) => {
-      const validated = api.tickets.classify.input.parse({ description });
-      const res = await fetch(api.tickets.classify.path, {
-        method: api.tickets.classify.method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(validated),
-        credentials: "include",
-      });
-      if (!res.ok) throw new Error("Failed to classify ticket");
-      return api.tickets.classify.responses[200].parse(await res.json());
-    },
+    mutationFn: (description: string) => apiRequest("POST", "/api/tickets/classify", { description }).then(r => r.json()),
   });
 }
 
 export function useSuggestResponse() {
   return useMutation({
-    mutationFn: async (id: number) => {
-      const url = buildUrl(api.tickets.suggestResponse.path, { id });
-      const res = await fetch(url, {
-        method: api.tickets.suggestResponse.method,
-        credentials: "include",
-      });
-      if (!res.ok) throw new Error("Failed to generate suggestion");
-      return api.tickets.suggestResponse.responses[200].parse(await res.json());
+    mutationFn: (id: number) => apiRequest("POST", `/api/tickets/${id}/suggest-response`, {}).then(r => r.json()),
+  });
+}
+
+export function useTicketMessages(ticketId: number) {
+  return useQuery({
+    queryKey: ["/api/tickets", ticketId, "messages"],
+    queryFn: () => fetch(`/api/tickets/${ticketId}/messages`, { credentials: "include" }).then(r => r.json()),
+    enabled: !!ticketId,
+    refetchInterval: 5000,
+  });
+}
+
+export function useSendTicketMessage() {
+  return useMutation({
+    mutationFn: ({ ticketId, message }: { ticketId: number; message: string }) =>
+      apiRequest("POST", `/api/tickets/${ticketId}/messages`, { message }).then(r => r.json()),
+    onSuccess: (_data: any, vars: any) => {
+      queryClient.invalidateQueries({ queryKey: ["/api/tickets", vars.ticketId, "messages"] });
     },
   });
 }

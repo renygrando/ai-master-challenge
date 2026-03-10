@@ -7,27 +7,27 @@ export default function Analytics() {
   const { data: metrics } = useDashboardMetrics();
 
   const performanceData = [
-    { day: 'Mon', speed: 85, quality: 92 },
-    { day: 'Tue', speed: 82, quality: 94 },
-    { day: 'Wed', speed: 90, quality: 91 },
-    { day: 'Thu', speed: 87, quality: 95 },
-    { day: 'Fri', speed: 92, quality: 96 },
-    { day: 'Sat', speed: 95, quality: 98 },
-    { day: 'Sun', speed: 96, quality: 97 },
+    { day: 'Seg', speed: 85, quality: 92 },
+    { day: 'Ter', speed: 82, quality: 94 },
+    { day: 'Qua', speed: 90, quality: 91 },
+    { day: 'Qui', speed: 87, quality: 95 },
+    { day: 'Sex', speed: 92, quality: 96 },
+    { day: 'Sáb', speed: 95, quality: 98 },
+    { day: 'Dom', speed: 96, quality: 97 },
   ];
 
   return (
     <AppLayout>
       <div className="mb-8">
-        <h1 className="text-4xl font-display font-bold text-foreground mb-2" data-testid="text-page-title">Executive Analytics</h1>
-        <p className="text-muted-foreground text-lg">Deep dive into support organization performance.</p>
+        <h1 className="text-4xl font-display font-bold text-foreground mb-2" data-testid="text-page-title">Analytics Executivo</h1>
+        <p className="text-muted-foreground text-lg">Análise aprofundada do desempenho da organização de suporte.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         <Card className="border-border/50">
           <CardHeader>
-            <CardTitle className="font-display text-xl text-foreground" data-testid="text-chart-title-performance">Team Performance Matrix</CardTitle>
-            <CardDescription>Resolution speed vs quality score</CardDescription>
+            <CardTitle className="font-display text-xl text-foreground" data-testid="text-chart-title-performance">Matriz de Desempenho da Equipe</CardTitle>
+            <CardDescription>Velocidade de resolução vs pontuação de qualidade</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="h-[300px] w-full">
@@ -37,8 +37,8 @@ export default function Analytics() {
                   <XAxis dataKey="day" stroke="hsl(var(--muted-foreground))" tickLine={false} axisLine={false} />
                   <YAxis stroke="hsl(var(--muted-foreground))" domain={[70, 100]} tickLine={false} axisLine={false} />
                   <Tooltip contentStyle={{ borderRadius: '8px' }} />
-                  <Line type="monotone" dataKey="speed" stroke="hsl(var(--primary))" strokeWidth={3} dot={{ r: 4 }} name="Speed Score" />
-                  <Line type="monotone" dataKey="quality" stroke="hsl(var(--secondary))" strokeWidth={3} dot={{ r: 4 }} name="Quality Score" />
+                  <Line type="monotone" dataKey="speed" stroke="hsl(var(--primary))" strokeWidth={3} dot={{ r: 4 }} name="Velocidade" />
+                  <Line type="monotone" dataKey="quality" stroke="hsl(var(--secondary))" strokeWidth={3} dot={{ r: 4 }} name="Qualidade" />
                 </LineChart>
               </ResponsiveContainer>
             </div>
@@ -47,8 +47,8 @@ export default function Analytics() {
 
         <Card className="border-border/50">
           <CardHeader>
-            <CardTitle className="font-display text-xl text-foreground" data-testid="text-chart-title-deflection">AI Deflection Rate</CardTitle>
-            <CardDescription>Percentage of tickets resolved without human intervention</CardDescription>
+            <CardTitle className="font-display text-xl text-foreground" data-testid="text-chart-title-deflection">Taxa de Deflexão da IA</CardTitle>
+            <CardDescription>Percentual de chamados resolvidos sem intervenção humana</CardDescription>
           </CardHeader>
           <CardContent className="flex items-center justify-center flex-col h-[300px]">
             <div className="relative w-48 h-48 rounded-full border-8 border-muted flex items-center justify-center">
@@ -64,11 +64,11 @@ export default function Analytics() {
               </svg>
               <div className="text-center">
                 <div className="text-5xl font-display font-bold text-foreground" data-testid="text-deflection-rate">{metrics?.automationRate || 68}%</div>
-                <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider mt-1">Deflected</div>
+                <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider mt-1">Deflectido</div>
               </div>
             </div>
             <p className="mt-8 text-sm text-center text-muted-foreground max-w-sm">
-              AI successfully handled <strong>{(metrics?.automationRate || 68) * 12}</strong> queries this week, saving approximately <strong>45 hours</strong> of agent time.
+              A IA resolveu <strong>{(metrics?.automationRate || 68) * 12}</strong> consultas esta semana, economizando aproximadamente <strong>45 horas</strong> de trabalho.
             </p>
           </CardContent>
         </Card>

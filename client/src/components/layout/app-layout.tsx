@@ -18,7 +18,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
             </div>
             <div className="flex items-center gap-4">
               <div className="text-xs font-medium text-muted-foreground uppercase tracking-widest bg-secondary/10 px-3 py-1.5 rounded-full border border-secondary/20" data-testid="text-system-status">
-                System Status: <span className="text-foreground font-bold">Optimal</span>
+                Status: <span className="text-foreground font-bold">Operacional</span>
               </div>
             </div>
           </header>
