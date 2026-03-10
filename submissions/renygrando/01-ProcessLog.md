@@ -394,3 +394,138 @@ Definir estratégia de tratamento de dados ausentes (imputação vs. exclusão) 
 </details>
 
 ---
+
+<details>
+<summary><strong>🛠️ 05. Sanitização com Python e Setup de Stack Analítico</strong> | 09 Mar 2026 | 21:10</summary>
+
+### Objetivo da Etapa
+
+Executar sanitização completa dos datasets usando Python via ChatGPT, hospedar os dados limpos no Airtable como plataforma de interface e análise, e preparar a infraestrutura com n8n para automação de criação de chamados e categorização futura.
+
+### Ferramenta/IA Usada
+
+- **ChatGPT** (Sanitização com Python - ESCOLHIDA)
+- **Airtable** (Hospedagem de dados e interface de análise)
+- **Google Gemini** (Perguntas de análise de dados)
+- **IA nativa do Airtable** (Análises automáticas)
+- **n8n** (Preparação para automação de fluxos)
+- **GitHub Copilot** (Documentação)
+
+### Prompt ou Instrução Dada
+
+**Objetivo geral:**
+> "Tratar os dados com o ChatGPT utilizando Python, sanitizar os dois datasets, usar o Airtable para hospedar dados e criar interface, e preparar o n8n para automação de criação de chamados e categorização."
+
+**Fluxo de trabalho:**
+1. Sanitização Python dos datasets
+2. Upload para Airtable
+3. Análises via Gemini + IA nativa Airtable
+4. Documentação de todos os artefatos
+
+### Saída Obtida
+
+#### 📊 Datasets Sanitizados
+
+**Dataset 1: customer_support_tickets_sanitized_from_original.csv**
+- Versão sanitizada do dataset original
+- Tratamento de valores ausentes
+- Limpeza de inconsistências identificadas na auditoria
+
+**Dataset 2: all_tickets_processed_improved_v3_sanitized.csv**
+- Versão melhorada com v3 de processamento
+- Otimizações adicionais aplicadas
+- Dataset de maior qualidade para análises
+
+**Relatórios de Sanitização:**
+- `customer_support_tickets_sanitization_report.csv` — Detalhes do processo de limpeza
+- `all_tickets_processed_improved_v3_sanitization_report.csv` — Relatório da v3
+- Linhas rejeitadas documentadas em arquivos separados
+
+#### 🎯 Airtable - Plataforma Central
+
+**Link de acesso:**  
+🔗 [Airtable - Support Redesign Base](https://airtable.com/appyQLnnOhn8YxI4A/pagWmPKMLotOzpqzG)
+
+**Funcionalidades implementadas:**
+- ✅ Hospedagem dos datasets sanitizados
+- ✅ Interface visual para exploração de dados
+- ✅ Campos calculados e análises nativas
+- ✅ Integração para consultas via Gemini
+- ✅ Preparação para automações via n8n
+
+#### 📈 Análises Realizadas
+
+**Via Google Gemini (Perguntas de análise):**
+- Consultas estruturadas sobre padrões nos dados
+- Identificação de tendências operacionais
+- Oportunidades de automação
+
+**Via IA Nativa do Airtable:**
+- Análises automáticas das tabelas
+- Estatísticas descritivas
+- Detecção de padrões
+
+**📁 Relatórios PDF Gerados:**
+
+1. **anlise_de_gargalos_operacionais_suporte_de_ti.pdf**
+   - Identificação de gargalos operacionais no suporte
+   - Análise de eficiência por canal/tipo de ticket
+   - Recomendações de otimização
+
+2. **anlise_estratgica_de_satisfao_do_cliente_kpi_customer_satisfaction_rating.pdf**
+   - Análise detalhada de satisfação do cliente (CSAT)
+   - KPIs por segmento
+   - Correlações entre métricas
+
+3. **quantificao_do_desperdcio_operacional_e_potencial_de_automao.pdf**
+   - Quantificação de tempo desperdiçado
+   - Oportunidades de automação mensuradas
+   - ROI estimado para iniciativas de automação
+
+#### 🔄 n8n - Preparação de Stack de Automação
+
+**Objetivo:** Criar fluxos de automação para:
+- ✅ Recebimento e categorização automática de chamados
+- ✅ Roteamento inteligente baseado em histórico
+- ✅ Integração com Airtable para atualização de registros
+
+**Status:** Em preparação para próximas etapas
+
+#### Arquivos Gerados em `/assets`
+
+| Arquivo | Tipo | Descrição |
+|---------|------|-----------|
+| `customer_support_tickets_sanitized_from_original.csv` | Dataset | Dataset original sanitizado |
+| `all_tickets_processed_improved_v3_sanitized.csv` | Dataset | Dataset melhorado v3 |
+| `customer_support_tickets_sanitization_report.csv` | Relatório | Detalhes da sanitização |
+| `all_tickets_processed_improved_v3_sanitization_report.csv` | Relatório | Relatório da v3 |
+| `customer_support_tickets_rejected_rows.csv` | Log | Linhas rejeitadas (original) |
+| `all_tickets_processed_improved_v3_rejected_rows.csv` | Log | Linhas rejeitadas (v3) |
+| `anlise_de_gargalos_operacionais_suporte_de_ti.pdf` | Análise | Gargalos operacionais |
+| `anlise_estratgica_de_satisfao_do_cliente_kpi_customer_satisfaction_rating.pdf` | Análise | CSAT e KPIs |
+| `quantificao_do_desperdcio_operacional_e_potencial_de_automao.pdf` | Análise | ROI de automação |
+
+### O que Aproveitei
+
+- **Sanitização completa com Python:** Processamento sistemático e documentado com relatórios detalhados
+- **Duas versões de datasets:** Original (baseline) + v3 (otimizado) para comparação
+- **Airtable como hub central:** Interface visual intuitiva + capacidade de análise nativa
+- **Integração Gemini:** Perguntas de análise estruturadas em linguagem natural
+- **Relatórios PDF acionáveis:** Três análises executivas bem definidas (gargalos, satisfação, automação)
+- **n8n preparado:** Stack pronta para automação de fluxos de criaçãoe categorização
+- **Rastreabilidade completa:** Todos os artefatos documentados em `/assets`
+
+### O que Descartei
+
+- Continuar com dados sujos — sanitização foi critério de sucesso
+- Análises isoladas — integração Airtable + Gemini + IA nativa criou sinergia
+- Foco apenas em métricas — três ângulos de análise (gargalos, satisfação, automação)
+- Processos manuais — n8n preparado para automação end-to-end
+
+### Próxima Decisão
+
+Aprofundar análises nos PDFs gerados, validar correlações entre CSAT e gargalos operacionais, e iniciar modelagem de regras de automação para n8n (categorização de tickets, roteamento inteligente, sugestões de resolução).
+
+</details>
+
+---
