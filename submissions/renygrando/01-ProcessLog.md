@@ -189,7 +189,8 @@ Usar variáveis de automação (Description, Subject, Product) para resolver cha
 
 **📸 Evidências Visuais:**
 
-- [Print da Análise Gemini](prints/gemini.google.com-Google%20Gemini-fpscreenshot.jpeg)
+- [Print 1 - Análise Gemini (Prompt 1)](prints/prompt1-gemini.jpeg)
+- [Print 2 - Análise Gemini (Prompt 2)](prints/prompt2-gemini.jpeg)
 
 ### O que Aproveitei
 
