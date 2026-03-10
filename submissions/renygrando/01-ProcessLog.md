@@ -125,17 +125,20 @@ Realizar análise profunda do dataset de suporte ao cliente para entender o pape
 ### Prompt ou Instrução Dada
 
 **Pergunta 1:**
+
 > "Analise este dataset de suporte ao cliente. Explique o papel provável de cada coluna no processo operacional de atendimento. Classifique cada coluna em uma destas categorias:
+>
 > - identificador
 > - atributo do cliente
 > - variável operacional
 > - variável de experiência do cliente
 > - variável textual
 > - variável potencial para automação
-> 
+>
 > Apresente a resposta em formato de tabela."
 
 **Pergunta 2:**
+
 > "Considerando o objetivo de analisar eficiência operacional e oportunidades de automação no suporte ao cliente, quais colunas são mais críticas para entender o fluxo de atendimento?"
 
 ### Saída Obtida
@@ -144,29 +147,30 @@ Realizar análise profunda do dataset de suporte ao cliente para entender o pape
 
 O Gemini identificou **17 colunas** no dataset e classificou cada uma conforme solicitado:
 
-| Coluna | Papel no Processo Operacional de Atendimento | Categoria |
-|--------|----------------------------------------------|-----------|
-| **Ticket ID** | Funciona como o código de rastreamento único de cada chamado. Permite que o cliente e os agentes encontrem rapidamente o histórico e acompanhem o caso. | identificador |
-| **Customer Name** | Usado para a comunicação e saudação com o cliente. Ajuda a humanizar o atendimento chamando-o pelo nome. | atributo do cliente |
-| **Customer Email** | Canal principal de contato de retorno (para e-mails) e também como chave de busca secundária para o perfil e histórico de solicitações do usuário. | atributo do cliente |
-| **Customer Age** | Pode ser usado para contextualizar a abordagem, permitindo ao agente adotar um tom de voz ou nível de didática técnica mais apropriado. | atributo do cliente |
-| **Customer Gender** | Contribui para traçar o perfil demográfico da base de clientes e auxilia no uso correto de pronomes durante a comunicação personalizada. | atributo do cliente |
-| **Product Purchased** | Indica de qual produto o cliente está falando, permitindo que o ticket seja direcionado a um agente especializado na categoria daquele produto. | variável operacional |
-| **Date of Purchase** | Crucial para validar a elegibilidade do cliente a serviços de garantia, trocas, devoluções e verificar o ciclo de vida do equipamento. | variável operacional |
-| **Ticket Type** | (Ex: Dúvida, Problema Técnico). Define a grande categoria do chamado, influenciando o roteamento e direcionando os KPIs da operação. | variável operacional |
-| **Ticket Subject** | É o "assunto" que funciona como o resumo principal da solicitação. Usado pelo agente de triagem para bater o olho e entender rapidamente do que se trata o problema. | variável textual |
-| **Ticket Description** | Contém o relato completo (texto livre) escrito pelo cliente. É aqui que algoritmos de IA podem ser aplicados para análise de sentimentos, respostas automáticas via chatbots ou auto-roteamento (NLP). | variável potencial para automação |
-| **Ticket Status** | (Ex: Aberto, Pendente, Fechado). Controla em que etapa do fluxo de trabalho o chamado se encontra, sendo vital para gestão das filas de atendimento e SLAs. | variável operacional |
-| **Resolution** | Relato de como o chamado foi resolvido. Serve de registro histórico para auditorias e para retroalimentar bases de conhecimento (FAQs). | variável textual |
-| **Ticket Priority** | Define a urgência da solicitação. Garante que problemas críticos passem à frente na fila para não violar acordos de tempo de serviço. | variável potencial para automação |
-| **Ticket Channel** | Indica a origem do chamado (Chat, E-mail, Redes Sociais). Permite gerenciar a alocação de equipe por canal. | variável operacional |
-| **First Response Time** | Tempo que a operação demorou para dar a primeira resposta ao cliente. Métrica essencial de controle de performance de SLA. | variável operacional |
-| **Time to Resolution** | O tempo total utilizado para solucionar a demanda e fechar o ticket. Indica a eficiência global da equipe e gargalos. | variável operacional |
-| **Customer Satisfaction Rating** | A nota final (CSAT) dada pelo cliente após o atendimento. Termômetro principal do nível de excelência do serviço. | variável de experiência do cliente |
+| Coluna                           | Papel no Processo Operacional de Atendimento                                                                                                                                                           | Categoria                          |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------- |
+| **Ticket ID**                    | Funciona como o código de rastreamento único de cada chamado. Permite que o cliente e os agentes encontrem rapidamente o histórico e acompanhem o caso.                                                | identificador                      |
+| **Customer Name**                | Usado para a comunicação e saudação com o cliente. Ajuda a humanizar o atendimento chamando-o pelo nome.                                                                                               | atributo do cliente                |
+| **Customer Email**               | Canal principal de contato de retorno (para e-mails) e também como chave de busca secundária para o perfil e histórico de solicitações do usuário.                                                     | atributo do cliente                |
+| **Customer Age**                 | Pode ser usado para contextualizar a abordagem, permitindo ao agente adotar um tom de voz ou nível de didática técnica mais apropriado.                                                                | atributo do cliente                |
+| **Customer Gender**              | Contribui para traçar o perfil demográfico da base de clientes e auxilia no uso correto de pronomes durante a comunicação personalizada.                                                               | atributo do cliente                |
+| **Product Purchased**            | Indica de qual produto o cliente está falando, permitindo que o ticket seja direcionado a um agente especializado na categoria daquele produto.                                                        | variável operacional               |
+| **Date of Purchase**             | Crucial para validar a elegibilidade do cliente a serviços de garantia, trocas, devoluções e verificar o ciclo de vida do equipamento.                                                                 | variável operacional               |
+| **Ticket Type**                  | (Ex: Dúvida, Problema Técnico). Define a grande categoria do chamado, influenciando o roteamento e direcionando os KPIs da operação.                                                                   | variável operacional               |
+| **Ticket Subject**               | É o "assunto" que funciona como o resumo principal da solicitação. Usado pelo agente de triagem para bater o olho e entender rapidamente do que se trata o problema.                                   | variável textual                   |
+| **Ticket Description**           | Contém o relato completo (texto livre) escrito pelo cliente. É aqui que algoritmos de IA podem ser aplicados para análise de sentimentos, respostas automáticas via chatbots ou auto-roteamento (NLP). | variável potencial para automação  |
+| **Ticket Status**                | (Ex: Aberto, Pendente, Fechado). Controla em que etapa do fluxo de trabalho o chamado se encontra, sendo vital para gestão das filas de atendimento e SLAs.                                            | variável operacional               |
+| **Resolution**                   | Relato de como o chamado foi resolvido. Serve de registro histórico para auditorias e para retroalimentar bases de conhecimento (FAQs).                                                                | variável textual                   |
+| **Ticket Priority**              | Define a urgência da solicitação. Garante que problemas críticos passem à frente na fila para não violar acordos de tempo de serviço.                                                                  | variável potencial para automação  |
+| **Ticket Channel**               | Indica a origem do chamado (Chat, E-mail, Redes Sociais). Permite gerenciar a alocação de equipe por canal.                                                                                            | variável operacional               |
+| **First Response Time**          | Tempo que a operação demorou para dar a primeira resposta ao cliente. Métrica essencial de controle de performance de SLA.                                                                             | variável operacional               |
+| **Time to Resolution**           | O tempo total utilizado para solucionar a demanda e fechar o ticket. Indica a eficiência global da equipe e gargalos.                                                                                  | variável operacional               |
+| **Customer Satisfaction Rating** | A nota final (CSAT) dada pelo cliente após o atendimento. Termômetro principal do nível de excelência do serviço.                                                                                      | variável de experiência do cliente |
 
 #### Resposta do Gemini - Parte 2: Colunas Críticas para Análise
 
 **1. Colunas Críticas para Eficiência Operacional:**
+
 - **Time to Resolution**: Principal métrica de eficiência. Identifica gargalos e tipos de problemas que travam o fluxo.
 - **First Response Time**: Avalia agilidade em acolher o cliente. Tempos altos indicam filas longas ou falta de equipe.
 - **Ticket Status**: Mapeia o estado atual do fluxo. Análise histórica identifica chamados "presos" em áreas específicas.
@@ -174,6 +178,7 @@ O Gemini identificou **17 colunas** no dataset e classificou cada uma conforme s
 - **Ticket Priority**: Mostra como o fluxo está sendo ordenado. Garante resolução prioritária de chamados críticos.
 
 **2. Colunas Críticas para Oportunidades de Automação:**
+
 - **Ticket Description**: Mina de ouro da automação. NLP pode identificar problemas reais, extrair entidades e sugerir respostas automáticas.
 - **Ticket Subject** e **Ticket Type**: Cruciais para automação de triagem e roteamento inteligente sem intervenção humana.
 - **Resolution**: Textos de resolução formam base de conhecimento para treinar LLMs e chatbots.
@@ -183,6 +188,7 @@ O Gemini identificou **17 colunas** no dataset e classificou cada uma conforme s
 Usar variáveis de automação (Description, Subject, Product) para resolver chamados simples ou repassá-los inteligentemente, consequentemente melhorando variáveis de eficiência operacional (reduzindo First Response Time e Time to Resolution) e desafogando a equipe.
 
 **📸 Evidências Visuais:**
+
 - [Print da Análise Gemini](prints/gemini.google.com-Google%20Gemini-fpscreenshot.jpeg)
 
 ### O que Aproveitei
@@ -226,13 +232,17 @@ Realizar auditoria estrutural completa do dataset `customer_support_tickets` par
 ### Prompt ou Instrução Dada
 
 **Contexto do problema:**
+
 > "Estou sanitizando as tabelas enviadas pois há dados inconsistentes, estou pedindo para o ChatGPT estruturar e analisar utilizando Python."
 
 **Solicitação principal:**
+
 > "Pedi para fazer uma análise geral da tabela customer_support_tickets"
 
 **Análise solicitada:**
+
 > Auditoria estrutural verificando cinco dimensões críticas de qualidade de dados:
+>
 > - Ausência de valores
 > - Duplicação
 > - Consistência de formato
@@ -246,31 +256,32 @@ Realizar auditoria estrutural completa do dataset `customer_support_tickets` par
 
 #### Tabela de Diagnóstico Completo
 
-| Coluna | Valores nulos | % nulos | Valores únicos | Duplicações | Possíveis problemas |
-|--------|---------------|---------|----------------|-------------|---------------------|
-| Ticket ID | 0 | 0% | 1000 | 0 | nenhum problema evidente |
-| Customer Name | 0 | 0% | 1000 | 0 | nenhum problema evidente |
-| Customer Email | 0 | 0% | 1000 | 0 | nenhum problema evidente |
-| Customer Age | 0 | 0% | 53 | 947 | nenhum problema evidente |
-| Customer Gender | 0 | 0% | 3 | 997 | nenhum problema evidente |
-| Product Purchased | 0 | 0% | 5 | 995 | nenhum problema evidente |
-| Date of Purchase | 0 | 0% | 367 | 633 | nenhum problema evidente |
-| Ticket Type | 0 | 0% | 4 | 996 | nenhum problema evidente |
-| Ticket Subject | 0 | 0% | 1000 | 0 | nenhum problema evidente |
-| Ticket Description | 0 | 0% | 1000 | 0 | nenhum problema evidente |
-| Ticket Status | 0 | 0% | 3 | 997 | nenhum problema evidente |
-| **Resolution** | **505** | **50.5%** | 495 | 505 | **valores ausentes** |
-| Ticket Priority | 0 | 0% | 3 | 997 | nenhum problema evidente |
-| Ticket Channel | 0 | 0% | 4 | 996 | nenhum problema evidente |
-| **First Response Time** | **205** | **20.5%** | 794 | 206 | **valores ausentes** |
-| **Time to Resolution** | **205** | **20.5%** | 794 | 206 | **valores ausentes** |
-| **Customer Satisfaction Rating** | **205** | **20.5%** | 5 | 205 | **valores ausentes** |
+| Coluna                           | Valores nulos | % nulos   | Valores únicos | Duplicações | Possíveis problemas      |
+| -------------------------------- | ------------- | --------- | -------------- | ----------- | ------------------------ |
+| Ticket ID                        | 0             | 0%        | 1000           | 0           | nenhum problema evidente |
+| Customer Name                    | 0             | 0%        | 1000           | 0           | nenhum problema evidente |
+| Customer Email                   | 0             | 0%        | 1000           | 0           | nenhum problema evidente |
+| Customer Age                     | 0             | 0%        | 53             | 947         | nenhum problema evidente |
+| Customer Gender                  | 0             | 0%        | 3              | 997         | nenhum problema evidente |
+| Product Purchased                | 0             | 0%        | 5              | 995         | nenhum problema evidente |
+| Date of Purchase                 | 0             | 0%        | 367            | 633         | nenhum problema evidente |
+| Ticket Type                      | 0             | 0%        | 4              | 996         | nenhum problema evidente |
+| Ticket Subject                   | 0             | 0%        | 1000           | 0           | nenhum problema evidente |
+| Ticket Description               | 0             | 0%        | 1000           | 0           | nenhum problema evidente |
+| Ticket Status                    | 0             | 0%        | 3              | 997         | nenhum problema evidente |
+| **Resolution**                   | **505**       | **50.5%** | 495            | 505         | **valores ausentes**     |
+| Ticket Priority                  | 0             | 0%        | 3              | 997         | nenhum problema evidente |
+| Ticket Channel                   | 0             | 0%        | 4              | 996         | nenhum problema evidente |
+| **First Response Time**          | **205**       | **20.5%** | 794            | 206         | **valores ausentes**     |
+| **Time to Resolution**           | **205**       | **20.5%** | 794            | 206         | **valores ausentes**     |
+| **Customer Satisfaction Rating** | **205**       | **20.5%** | 5              | 205         | **valores ausentes**     |
 
 #### Principais Problemas Identificados
 
 **1️⃣ Ausência sistemática de dados em colunas de resultado**
 
 **Resolution — 50,5% nulos**
+
 - **Cenários possíveis:**
   - Tickets ainda não resolvidos (esperado)
   - Falha de registro da solução (crítico)
@@ -281,6 +292,7 @@ Realizar auditoria estrutural completa do dataset `customer_support_tickets` par
 - **Campo crítico para:** análise de causas, construção de base de conhecimento, automação de respostas
 
 **First Response Time — 20,5% nulos**
+
 - **Possíveis causas:**
   - Ticket resolvido automaticamente
   - Sistema não registrou a primeira resposta
@@ -291,6 +303,7 @@ Realizar auditoria estrutural completa do dataset `customer_support_tickets` par
   - Impossibilita avaliação de qualidade do atendimento
 
 **Time to Resolution — 20,5% nulos**
+
 - **Causa provável:** Tickets ainda em aberto
 - **Inconsistência crítica a verificar:**
   ```
@@ -300,6 +313,7 @@ Realizar auditoria estrutural completa do dataset `customer_support_tickets` par
   ```
 
 **Customer Satisfaction Rating — 20,5% nulos**
+
 - **Causas comuns:**
   - Cliente não respondeu à pesquisa
   - Ticket ainda não finalizado
@@ -309,19 +323,20 @@ Realizar auditoria estrutural completa do dataset `customer_support_tickets` par
 
 Colunas com alta duplicação são esperadas em sistemas operacionais:
 
-| Coluna | Motivo |
-|--------|--------|
-| Customer Gender | Poucas categorias possíveis |
-| Product Purchased | Catálogo limitado |
-| Ticket Type | Classificação operacional |
-| Ticket Priority | Níveis de urgência |
-| Ticket Channel | Poucos canais de entrada |
+| Coluna            | Motivo                      |
+| ----------------- | --------------------------- |
+| Customer Gender   | Poucas categorias possíveis |
+| Product Purchased | Catálogo limitado           |
+| Ticket Type       | Classificação operacional   |
+| Ticket Priority   | Níveis de urgência          |
+| Ticket Channel    | Poucos canais de entrada    |
 
 ✅ **Não é problema estrutural**
 
 **3️⃣ Verificações de faixa de valores**
 
 **Não foram encontrados:**
+
 - ❌ Idades negativas
 - ❌ Idades acima de 100
 - ❌ Avaliações fora da escala 1–5
@@ -332,6 +347,7 @@ Colunas com alta duplicação são esperadas em sistemas operacionais:
 **4️⃣ Integridade dos identificadores**
 
 **Ticket ID:**
+
 - ✅ Nenhum valor nulo
 - ✅ Nenhum duplicado
 - ✅ **Boa integridade de chave primária**
@@ -339,6 +355,7 @@ Colunas com alta duplicação são esperadas em sistemas operacionais:
 **5️⃣ Campos textuais sem anomalias estruturais**
 
 **Campos:** Ticket Subject, Ticket Description, Resolution
+
 - ✅ Sem duplicações excessivas
 - ✅ Sem campos vazios inesperados (exceto Resolution)
 - ✅ **Positivo para análises de NLP e automação**
@@ -346,14 +363,17 @@ Colunas com alta duplicação são esperadas em sistemas operacionais:
 #### Problemas que Comprometem Análises
 
 **🚨 Crítico 1: Métricas de SLA incompletas**
+
 - **Campos afetados:** First Response Time, Time to Resolution
 - **Consequência:** Impossível medir desempenho real do suporte e produtividade
 
 **🚨 Crítico 2: Conhecimento operacional incompleto**
+
 - **Campo afetado:** Resolution
 - **Consequência:** Perda de base de conhecimento, aprendizado organizacional e material para automação
 
 **🚨 Crítico 3: Viés em análise de satisfação**
+
 - **Campo afetado:** Customer Satisfaction Rating
 - **Consequência:** Clientes moderadamente satisfeitos não respondem pesquisas, inflando/distorcendo indicadores
 
@@ -363,9 +383,11 @@ Colunas com alta duplicação são esperadas em sistemas operacionais:
 **Qualidade analítica:** ⚠️ MODERADA
 
 **Conclusão:**
+
 > O dataset está bem estruturado, porém algumas métricas de resultado estão incompletas.
-> 
+>
 > **Em termos práticos:**
+>
 > - Análise operacional → **possível**
 > - Análise de experiência do cliente → **exige tratamento de nulos**
 
@@ -414,9 +436,11 @@ Executar sanitização completa dos datasets usando Python via ChatGPT, hospedar
 ### Prompt ou Instrução Dada
 
 **Objetivo geral:**
+
 > "Tratar os dados com o ChatGPT utilizando Python, sanitizar os dois datasets, usar o Airtable para hospedar dados e criar interface, e preparar o n8n para automação de criação de chamados e categorização."
 
 **Fluxo de trabalho:**
+
 1. Sanitização Python dos datasets
 2. Upload para Airtable
 3. Análises via Gemini + IA nativa Airtable
@@ -427,16 +451,19 @@ Executar sanitização completa dos datasets usando Python via ChatGPT, hospedar
 #### 📊 Datasets Sanitizados
 
 **Dataset 1: customer_support_tickets_sanitized_from_original.csv**
+
 - Versão sanitizada do dataset original
 - Tratamento de valores ausentes
 - Limpeza de inconsistências identificadas na auditoria
 
 **Dataset 2: all_tickets_processed_improved_v3_sanitized.csv**
+
 - Versão melhorada com v3 de processamento
 - Otimizações adicionais aplicadas
 - Dataset de maior qualidade para análises
 
 **Relatórios de Sanitização:**
+
 - `customer_support_tickets_sanitization_report.csv` — Detalhes do processo de limpeza
 - `all_tickets_processed_improved_v3_sanitization_report.csv` — Relatório da v3
 - Linhas rejeitadas documentadas em arquivos separados
@@ -446,7 +473,13 @@ Executar sanitização completa dos datasets usando Python via ChatGPT, hospedar
 **Link de acesso:**  
 🔗 [Airtable - Support Redesign Base](https://airtable.com/appyQLnnOhn8YxI4A/pagWmPKMLotOzpqzG)
 
+**Visualização Embarcada:**
+> ⚠️ *Nota: Se o embed abaixo não aparecer, acesse diretamente pelo link acima*
+
+<iframe class="airtable-embed" src="https://airtable.com/embed/appyQLnnOhn8YxI4A/shrodtwpKjKV6ltC7" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+
 **Funcionalidades implementadas:**
+
 - ✅ Hospedagem dos datasets sanitizados
 - ✅ Interface visual para exploração de dados
 - ✅ Campos calculados e análises nativas
@@ -456,11 +489,13 @@ Executar sanitização completa dos datasets usando Python via ChatGPT, hospedar
 #### 📈 Análises Realizadas
 
 **Via Google Gemini (Perguntas de análise):**
+
 - Consultas estruturadas sobre padrões nos dados
 - Identificação de tendências operacionais
 - Oportunidades de automação
 
 **Via IA Nativa do Airtable:**
+
 - Análises automáticas das tabelas
 - Estatísticas descritivas
 - Detecção de padrões
@@ -485,6 +520,7 @@ Executar sanitização completa dos datasets usando Python via ChatGPT, hospedar
 #### 🔄 n8n - Preparação de Stack de Automação
 
 **Objetivo:** Criar fluxos de automação para:
+
 - ✅ Recebimento e categorização automática de chamados
 - ✅ Roteamento inteligente baseado em histórico
 - ✅ Integração com Airtable para atualização de registros
@@ -493,17 +529,17 @@ Executar sanitização completa dos datasets usando Python via ChatGPT, hospedar
 
 #### Arquivos Gerados em `/assets`
 
-| Arquivo | Tipo | Descrição |
-|---------|------|-----------|
-| `customer_support_tickets_sanitized_from_original.csv` | Dataset | Dataset original sanitizado |
-| `all_tickets_processed_improved_v3_sanitized.csv` | Dataset | Dataset melhorado v3 |
-| `customer_support_tickets_sanitization_report.csv` | Relatório | Detalhes da sanitização |
-| `all_tickets_processed_improved_v3_sanitization_report.csv` | Relatório | Relatório da v3 |
-| `customer_support_tickets_rejected_rows.csv` | Log | Linhas rejeitadas (original) |
-| `all_tickets_processed_improved_v3_rejected_rows.csv` | Log | Linhas rejeitadas (v3) |
-| `anlise_de_gargalos_operacionais_suporte_de_ti.pdf` | Análise | Gargalos operacionais |
-| `anlise_estratgica_de_satisfao_do_cliente_kpi_customer_satisfaction_rating.pdf` | Análise | CSAT e KPIs |
-| `quantificao_do_desperdcio_operacional_e_potencial_de_automao.pdf` | Análise | ROI de automação |
+| Arquivo                                                                         | Tipo      | Descrição                    |
+| ------------------------------------------------------------------------------- | --------- | ---------------------------- |
+| `customer_support_tickets_sanitized_from_original.csv`                          | Dataset   | Dataset original sanitizado  |
+| `all_tickets_processed_improved_v3_sanitized.csv`                               | Dataset   | Dataset melhorado v3         |
+| `customer_support_tickets_sanitization_report.csv`                              | Relatório | Detalhes da sanitização      |
+| `all_tickets_processed_improved_v3_sanitization_report.csv`                     | Relatório | Relatório da v3              |
+| `customer_support_tickets_rejected_rows.csv`                                    | Log       | Linhas rejeitadas (original) |
+| `all_tickets_processed_improved_v3_rejected_rows.csv`                           | Log       | Linhas rejeitadas (v3)       |
+| `anlise_de_gargalos_operacionais_suporte_de_ti.pdf`                             | Análise   | Gargalos operacionais        |
+| `anlise_estratgica_de_satisfao_do_cliente_kpi_customer_satisfaction_rating.pdf` | Análise   | CSAT e KPIs                  |
+| `quantificao_do_desperdcio_operacional_e_potencial_de_automao.pdf`              | Análise   | ROI de automação             |
 
 ### O que Aproveitei
 
