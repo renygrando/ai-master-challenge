@@ -455,15 +455,18 @@ Executar sanitização completa dos datasets usando Python via ChatGPT, hospedar
 > The interface must be divided into 3 distinct sections:
 >
 > 1. EXECUTIVE OVERVIEW (The "Health" of Support):
+>
 > - Metric Cards: Show Average 'Customer Satisfaction Rating', Average 'Time to Resolution', and Total Tickets.
 > - Target Tracking: Compare current resolution times against a target of 24 hours.
 >
 > 2. BOTTLENECK & WASTE DETECTOR (The "Where we lose time" section):
+>
 > - Heatmap or Bar Chart: 'Time to Resolution' grouped by 'Ticket Channel' and 'Ticket Priority'.
 > - List View: Filtered to show only "Critical" tickets that have been 'Open' for more than 48 hours.
-> - Formula Field: Calculate "Estimated Loss" (Time above average * $20/hour) and display as a total sum.
+> - Formula Field: Calculate "Estimated Loss" (Time above average \* $20/hour) and display as a total sum.
 >
 > 3. AI AUTOMATION PROTOTYPE (The "Working Solution" section):
+>
 > - Topic Grouping: Use 'Topic_group' from Dataset 2 to show which areas (Access, Billing, Hardware) have the most repetitive tickets.
 > - AI Action Column: A field that uses 'Ticket Description' to suggest a 'Draft AI Response' or 'Automated Resolution' based on previous successful resolutions.
 > - ROI Projection: A chart showing how many hours can be saved if the top 3 'Topic_groups' are handled by an AI Agent.
@@ -477,16 +480,19 @@ Executar sanitização completa dos datasets usando Python via ChatGPT, hospedar
 > Configure the interface with the following sections and specific widgets:
 >
 > 1. EXECUTIVE SUMMARY & ROI (Top Section)
+>
 > - Number Widget: "Monthly Waste Opportunity" hardcoded or calculated to show $128,395 (Based on 1,694 inefficient tickets).
 > - Number Widget: "Target CSAT SLA". Show a threshold of < 12 hours (Analysis proves CSAT drops below 3.0 after 12 hours).
 > - Pie Chart: "Volume by Top Categories". Show 'Hardware' (28.5%) and 'HR Support' (22.8%) as the dominant slices.
 >
 > 2. BOTTLENECK & FRICTION ZONES (Middle Section)
+>
 > - Bar Chart: "Worst Resolution Times". Filter to show 'Refund request' + 'Chat' + 'High Priority' peaking at 11.37 hours.
 > - Line Chart or Scatter Plot: "Channel Inconsistency". Highlight 'Social Media' having the highest standard deviation (5.93h).
 > - Text/Notes Widget: "The 94% Rule". Add a strategic note stating: "94% of resolution time occurs AFTER the first response. The bottleneck is in internal approvals, not first touch."
 >
 > 3. AUTOMATION ACTION PLAN (Bottom Section)
+>
 > - Grid/List View: "100% Automatable (Quick Wins)". Filter to show only tickets where 'topic_group' is 'Access' (Account access/unlocks).
 > - Grid/List View: "AI Triage Candidates". Filter to show 'Hardware' and 'HR Support' tickets that are currently open.
 > - Button/Action Field: Add a button labeled "Generate AI Resolution Draft" next to the 'Access' tickets to demonstrate a functional prototype.
@@ -609,6 +615,103 @@ Executar sanitização completa dos datasets usando Python via ChatGPT, hospedar
 ### Próxima Decisão
 
 Aprofundar análises nos PDFs gerados, validar correlações entre CSAT e gargalos operacionais, e iniciar modelagem de regras de automação para n8n (categorização de tickets, roteamento inteligente, sugestões de resolução).
+
+</details>
+
+---
+
+<details>
+<summary><strong>📊 06. Plano Estratégico de Automação com NotebookLLM</strong> | 09 Mar 2026 | 21:53</summary>
+
+### Objetivo da Etapa
+
+Consolidar os três relatórios PDF gerados na etapa anterior (gargalos operacionais, satisfação do cliente, desperdício operacional) em um único plano estratégico de automação que responda objetivamente: **O que automatizar**, **O que NÃO automatizar**, e **Como funcionaria na prática**. Este documento será a base arquitetural para criar o PRD e implementar a solução no Replit.
+
+### Ferramenta/IA Usada
+
+- **NotebookLLM** (Síntese de múltiplos documentos - ESCOLHIDA)
+- **Google Docs** (Hospedagem do plano estratégico)
+- **GitHub Copilot** (Documentação)
+
+### Prompt ou Instrução Dada
+
+**Contexto fornecido ao NotebookLLM:**
+
+> Upload dos três relatórios PDF:
+> 1. `anlise_de_gargalos_operacionais_suporte_de_ti.pdf`
+> 2. `anlise_estratgica_de_satisfao_do_cliente_kpi_customer_satisfaction_rating.pdf`
+> 3. `quantificao_do_desperdcio_operacional_e_potencial_de_automao.pdf`
+
+**Instrução principal:**
+
+> "Gere um plano estratégico de automação de suporte baseado nestes três relatórios. O plano deve responder:
+> 
+> - **O que automatizar:** Processos com maior ROI e menor risco
+> - **O que NÃO automatizar:** Cenários que exigem intervenção humana
+> - **Como funcionaria na prática:** Arquitetura de implementação, fluxos de trabalho, regras de negócio"
+
+### Saída Obtida
+
+#### 📄 Plano Estratégico de Automação Completo
+
+**Link do documento:**  
+🔗 [Plano Estratégico de Automação - Google Docs](https://docs.google.com/document/d/1qkUPIMH8vld6oHtNg-Bf7nT-d9csb87_w93FN5vLAZ8/edit?usp=sharing)
+
+**Estrutura do plano gerado:**
+
+**1. O QUE AUTOMATIZAR (Quick Wins + Alto ROI)**
+- Tickets de acesso (100% automatizável)
+- Categorização e triagem inicial via NLP
+- Roteamento inteligente por canal/prioridade
+- Respostas automáticas para dúvidas frequentes
+- Alertas de SLA breach
+
+**2. O QUE NÃO AUTOMATIZAR (Zona de Risco)**
+- Reclamações de clientes insatisfeitos (CSAT < 3.0)
+- Solicitações de reembolso (requer análise de políticas)
+- Tickets críticos com histórico de escalação
+- Casos complexos de Hardware que exigem diagnóstico técnico
+- Situações que envolvem decisões de negócio
+
+**3. COMO FUNCIONARIA NA PRÁTICA**
+- Arquitetura de sistema proposta
+- Fluxos de trabalho detalhados
+- Regras de negócio e thresholds
+- Integração entre ferramentas (Airtable + n8n + LLM)
+- Métricas de validação e monitoramento
+
+**4. PRIORIZAÇÃO DE IMPLEMENTAÇÃO**
+- Fase 1: Automação de tickets de acesso (ROI imediato)
+- Fase 2: Triagem e roteamento inteligente
+- Fase 3: Respostas automáticas baseadas em histórico
+- Fase 4: Sistema de alertas preditivos
+
+**5. ESTIMATIVAS DE IMPACTO**
+- Redução de tempo de resolução
+- Economia operacional estimada
+- Melhoria de CSAT esperada
+- Capacidade de escala
+
+### O que Aproveitei
+
+- **Síntese consolidada de múltiplos relatórios:** NotebookLLM unificou insights de três fontes distintas em um roadmap coeso
+- **Separação clara entre automatizável vs. não automatizável:** Evita over-automation e mantém foco humano onde necessário
+- **Abordagem prática:** Não é apenas teoria, mas um guia de implementação com regras de negócio concretas
+- **Priorização por ROI:** Fases de implementação ordenadas por impacto/esforço
+- **Estimativas quantificadas:** Métricas claras para validação de sucesso
+- **Documento público e compartilhável:** Google Docs permite colaboração e refinamento contínuo
+- **Base sólida para PRD:** Informações estruturadas prontas para conversão em Product Requirements Document
+
+### O que Descartei
+
+- Implementação sem planejamento prévio — plano estratégico evita desperdício de desenvolvimento
+- Automação indiscriminada de todos os processos — identificação de "zona de risco" protege experiência do cliente
+- Documentação dispersa — consolidação em único documento facilita governança
+- Abordagem big-bang — priorização em fases permite validação incremental
+
+### Próxima Decisão
+
+Utilizar o **Replit** como ambiente de desenvolvimento para implementar o protótipo de automação de tickets, começando pela **Fase 1** (automação de tickets de acesso - 100% automatizável). Criar o PRD (Product Requirements Document) baseado no plano estratégico e iniciar a construção da solução técnica.
 
 </details>
 
