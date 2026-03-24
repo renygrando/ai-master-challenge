@@ -19,24 +19,29 @@ Analisei 30.000+ tickets de suporte para identificar gargalos operacionais e opo
 ### Abordagem
 
 **Fase 1: Análise do Dataset**
+
 - Mapeamento das 17 colunas e classificação em categorias (identificador, operacional, textual, automação)
 - Uso de Google Gemini para análise semântica
 
 **Fase 2: Auditoria de Qualidade**
+
 - Diagnóstico estrutural com ChatGPT + Python
 - Identificação de problemas críticos (50.5% nulos em Resolution, 20.5% em métricas de tempo)
 
 **Fase 3: Jornada de Dados**
+
 - Sanitização completa com Python
 - Hospedagem no Airtable
 - Geração de 3 relatórios PDF analíticos
 
 **Fase 4: Planejamento Estratégico**
+
 - Síntese via NotebookLLM dos 3 relatórios
 - Definição clara: O que automatizar vs. NÃO automatizar
 - Roadmap de 4 fases priorizadas por ROI
 
 **Fase 5: Construção do Protótipo**
+
 - PRD gerado com ChatGPT
 - Sistema completo desenvolvido no Replit
 - Deploy público funcional
@@ -54,11 +59,13 @@ Analisei 30.000+ tickets de suporte para identificar gargalos operacionais e opo
 **Insight Crítico — A Regra dos 94%:**
 94% do tempo de resolução acontece **APÓS** a primeira resposta. O gargalo não está no atendimento inicial, mas nos processos internos.
 
-**CSAT Critical Threshold:** 
+**CSAT Critical Threshold:**
+
 - Após **12 horas** de resolução, CSAT despenca abaixo de 3.0
 - Categoria "Hardware" + "HR Support" = 51.3% do volume total
 
 **Quantificação do Desperdício:**
+
 - **$128,395/mês** em oportunidade operacional recuperável
 - **1,694 tickets ineficientes** identificados
 - Economia de **2-5 min/ticket** apenas com classificação automática
@@ -66,9 +73,10 @@ Analisei 30.000+ tickets de suporte para identificar gargalos operacionais e opo
 #### 🚀 Sistema G4 Hermes Funcional
 
 **Demo ao vivo:** https://g4-hermes.replit.app  
-**Código-fonte:** https://github.com/renygrando/Hermes  
+**Código-fonte:** https://github.com/renygrando/Hermes
 
 **7 Funcionalidades Implementadas:**
+
 1. Agente IA para abertura de chamados (conversacional)
 2. Classificação automática de tickets (NLP)
 3. Respostas automáticas (baseado em histórico)
@@ -78,6 +86,7 @@ Analisei 30.000+ tickets de suporte para identificar gargalos operacionais e opo
 7. Autenticação (Admin/User roles)
 
 **Validação do Roadmap:**
+
 - ✅ Implementa Fase 1: Automação de tickets de acesso (100% automatizável)
 - ✅ Implementa Fase 2: Triagem e roteamento inteligente
 - ✅ Implementa Fase 3: Respostas automáticas baseadas em histórico
@@ -86,20 +95,25 @@ Analisei 30.000+ tickets de suporte para identificar gargalos operacionais e opo
 #### 📊 Artefatos Entregues
 
 **Análises Executivas (PDFs):**
+
 - https://github.com/renygrando/ai-master-challenge/raw/submission/renygrando/submissions/renygrando/assets/anlise_de_gargalos_operacionais_suporte_de_ti.pdf
 - https://github.com/renygrando/ai-master-challenge/raw/submission/renygrando/submissions/renygrando/assets/anlise_estratgica_de_satisfao_do_cliente_kpi_customer_satisfaction_rating.pdf
 - https://github.com/renygrando/ai-master-challenge/raw/submission/renygrando/submissions/renygrando/assets/quantificao_do_desperdcio_operacional_e_potencial_de_automao.pdf
 
 **Plano Estratégico:**
+
 - https://docs.google.com/document/d/1qkUPIMH8vld6oHtNg-Bf7nT-d9csb87_w93FN5vLAZ8/edit?usp=sharing
 
 **Apresentação Executiva:**
+
 - https://github.com/renygrando/ai-master-challenge/raw/submission/renygrando/submissions/renygrando/assets/Unlocking_IT_Support_Efficiency.pdf
 
 **Infográfico:**
+
 - https://github.com/renygrando/ai-master-challenge/raw/submission/renygrando/submissions/renygrando/assets/infografico.png
 
 **Dashboard Airtable:**
+
 - https://airtable.com/appyQLnnOhn8YxI4A/pagWmPKMLotOzpqzG
 
 ### Recomendações
@@ -148,15 +162,15 @@ https://github.com/renygrando/ai-master-challenge/blob/submission/renygrando/sub
 
 ### Ferramentas usadas
 
-| Ferramenta | Para que usou |
-|------------|--------------|
-| **Google Gemini** | Análise semântica de datasets, classificação de colunas, identificação de variáveis críticas para automação (Etapa 03) |
-| **ChatGPT** | Sanitização com Python, geração do PRD, suporte ao desenvolvimento, planejamento inicial (Etapas 02, 04, 05, 07) |
-| **NotebookLLM** | Síntese de múltiplos relatórios PDF (gargalos + CSAT + desperdício) em plano estratégico unificado (Etapa 06) |
-| **Airtable** | Hospedagem de dados sanitizados, interface visual, análises nativas com IA do Airtable (Etapa 05) |
-| **Replit** | Ambiente de desenvolvimento integrado, hospedagem da aplicação G4 Hermes (Etapa 07) |
-| **GitHub Copilot** | Documentação do Process Log, assistência na estruturação do README (Etapas 01-07) |
-| **n8n** | Preparação de infraestrutura para automação futura (Etapa 05) |
+| Ferramenta         | Para que usou                                                                                                          |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| **Google Gemini**  | Análise semântica de datasets, classificação de colunas, identificação de variáveis críticas para automação (Etapa 03) |
+| **ChatGPT**        | Sanitização com Python, geração do PRD, suporte ao desenvolvimento, planejamento inicial (Etapas 02, 04, 05, 07)       |
+| **NotebookLLM**    | Síntese de múltiplos relatórios PDF (gargalos + CSAT + desperdício) em plano estratégico unificado (Etapa 06)          |
+| **Airtable**       | Hospedagem de dados sanitizados, interface visual, análises nativas com IA do Airtable (Etapa 05)                      |
+| **Replit**         | Ambiente de desenvolvimento integrado, hospedagem da aplicação G4 Hermes (Etapa 07)                                    |
+| **GitHub Copilot** | Documentação do Process Log, assistência na estruturação do README (Etapas 01-07)                                      |
+| **n8n**            | Preparação de infraestrutura para automação futura (Etapa 05)                                                          |
 
 ### Workflow
 
@@ -191,7 +205,7 @@ https://github.com/renygrando/ai-master-challenge/blob/submission/renygrando/sub
 ## Evidências
 
 - [x] **Screenshots das conversas com IA:** https://github.com/renygrando/ai-master-challenge/tree/submission/renygrando/submissions/renygrando/prints
-- [x] **Chat exports:** 
+- [x] **Chat exports:**
   - https://chatgpt.com/share/e/69af3bef-f91c-8009-8cae-d8b748904466 (Etapa 02)
   - https://chatgpt.com/share/e/69af50d3-1e98-8009-b050-88a7892fa829 (Etapa 04)
 - [x] **Git history:** https://github.com/renygrando/ai-master-challenge/commits/submission/renygrando (11+ commits versionados)
