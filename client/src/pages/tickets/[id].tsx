@@ -27,7 +27,7 @@ export default function TicketDetail() {
     return (
       <AppLayout>
         <div className="flex h-64 items-center justify-center">
-          <Loader2 className="w-8 h-8 animate-spin text-secondary" />
+          <Loader2 className="w-8 h-8 animate-spin text-primary" />
         </div>
       </AppLayout>
     );
@@ -37,8 +37,8 @@ export default function TicketDetail() {
     return (
       <AppLayout>
         <div className="text-center py-20">
-          <h2 className="text-2xl font-display text-foreground mb-4" data-testid="text-ticket-not-found">Chamado não encontrado</h2>
-          <Link href="/admin/chamados" className="text-secondary hover:underline" data-testid="link-back-to-tickets">Voltar à lista</Link>
+          <h2 className="text-2xl font-bold text-foreground mb-4" data-testid="text-ticket-not-found">Chamado não encontrado</h2>
+          <Link href="/admin/chamados" className="text-primary hover:underline font-medium" data-testid="link-back-to-tickets">Voltar à lista</Link>
         </div>
       </AppLayout>
     );
@@ -75,7 +75,7 @@ export default function TicketDetail() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
             <div className="flex items-center gap-3 mb-2 flex-wrap">
-              <h1 className="text-3xl font-display font-bold text-foreground" data-testid="text-ticket-title">{ticket.title}</h1>
+              <h1 className="text-3xl font-bold text-foreground" data-testid="text-ticket-title">{ticket.title}</h1>
               <span className="text-muted-foreground font-mono text-lg" data-testid="text-ticket-id">#{ticket.id}</span>
             </div>
             <div className="flex items-center gap-3 text-sm text-muted-foreground flex-wrap">
@@ -90,7 +90,7 @@ export default function TicketDetail() {
           
           <div className="flex items-center gap-3">
             <Select value={ticket.status} onValueChange={handleStatusChange} disabled={updateMutation.isPending}>
-              <SelectTrigger className="w-[160px] bg-card border-border/50 font-medium" data-testid="select-ticket-status">
+              <SelectTrigger className="w-[160px] bg-card border-border font-medium" data-testid="select-ticket-status">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -106,8 +106,8 @@ export default function TicketDetail() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
-          <Card className="border-border/50">
-            <CardHeader className="bg-muted/20 border-b border-border/50 pb-4">
+          <Card className="border-border">
+            <CardHeader className="bg-muted/30 border-b border-border pb-4">
               <CardTitle className="text-lg font-semibold flex justify-between items-center gap-2 flex-wrap">
                 Descrição
                 <div className="flex gap-2 flex-wrap">
@@ -123,14 +123,14 @@ export default function TicketDetail() {
             </CardContent>
           </Card>
 
-          <Card className="border-border/50">
-            <CardHeader className="bg-muted/20 border-b border-border/50">
+          <Card className="border-border">
+            <CardHeader className="bg-muted/30 border-b border-border">
               <CardTitle className="text-lg font-semibold flex items-center justify-between gap-2 flex-wrap">
                 Resposta
                 <Button 
                   variant="outline" 
                   size="sm" 
-                  className="text-secondary border-secondary/30"
+                  className="text-primary border-primary/30"
                   onClick={handleSuggest}
                   disabled={suggestMutation.isPending}
                   data-testid="button-ai-suggestion"
@@ -142,7 +142,7 @@ export default function TicketDetail() {
             </CardHeader>
             <CardContent className="p-6">
               {activeSuggestion && (
-                <div className="mb-6 p-4 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-md relative" data-testid="text-ai-suggestion">
+                <div className="mb-6 p-4 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-lg relative" data-testid="text-ai-suggestion">
                   <div className="absolute -top-3 left-4 bg-emerald-100 dark:bg-emerald-800 text-emerald-800 dark:text-emerald-200 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md border border-emerald-200 dark:border-emerald-700">
                     Rascunho IA
                   </div>
@@ -158,13 +158,13 @@ export default function TicketDetail() {
 
               <Textarea 
                 placeholder="Digite sua resposta..." 
-                className="min-h-[150px] resize-y mb-4 border-border/50 focus-visible:ring-secondary"
+                className="min-h-[150px] resize-y mb-4 border-border focus-visible:ring-primary"
                 value={replyText}
                 onChange={(e) => setReplyText(e.target.value)}
                 data-testid="input-reply"
               />
               <div className="flex justify-end">
-                <Button className="gap-2" data-testid="button-send-reply">
+                <Button className="gap-2 rounded-lg" data-testid="button-send-reply">
                   <Send className="w-4 h-4" /> Enviar Resposta
                 </Button>
               </div>
@@ -173,14 +173,14 @@ export default function TicketDetail() {
         </div>
 
         <div className="space-y-6">
-          <Card className="border-border/50 bg-muted/20">
+          <Card className="border-border bg-muted/20">
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-semibold uppercase tracking-wider text-foreground">Metadados do Chamado</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
                 <div className="text-xs text-muted-foreground mb-1 font-semibold uppercase">Categoria</div>
-                <div className="font-medium px-3 py-1 bg-background rounded-md border border-border inline-block" data-testid="text-ticket-category">{ticket.category}</div>
+                <div className="font-medium px-3 py-1 bg-background rounded-lg border border-border inline-block" data-testid="text-ticket-category">{ticket.category}</div>
               </div>
               <Separator />
               <div>
@@ -192,7 +192,7 @@ export default function TicketDetail() {
                 <div className="text-xs text-muted-foreground mb-1 font-semibold uppercase">Confiança IA</div>
                 <div className="flex items-center gap-2">
                   <div className="w-full h-2 bg-background rounded-full overflow-hidden border border-border">
-                    <div className="h-full bg-secondary" style={{ width: `${(ticket.confidenceScore || 0) * 100}%` }} />
+                    <div className="h-full bg-primary" style={{ width: `${(ticket.confidenceScore || 0) * 100}%` }} />
                   </div>
                   <span className="text-sm font-medium" data-testid="text-confidence-score">{Math.round((ticket.confidenceScore || 0) * 100)}%</span>
                 </div>
@@ -200,16 +200,16 @@ export default function TicketDetail() {
             </CardContent>
           </Card>
           
-          <Card className="border-border/50">
+          <Card className="border-border">
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-semibold uppercase tracking-wider">Problemas Similares Resolvidos</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               {[1, 2].map((i) => (
-                <div key={i} className="p-3 rounded-md border border-border/50 bg-muted/20 cursor-pointer hover-elevate group" data-testid={`card-similar-ticket-${i}`}>
+                <div key={i} className="p-3 rounded-lg border border-border bg-muted/20 cursor-pointer hover:shadow-md transition-shadow group" data-testid={`card-similar-ticket-${i}`}>
                   <div className="flex items-center gap-2 mb-1">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
-                    <span className="font-medium text-sm group-hover:text-secondary transition-colors">Falha de login após atualização</span>
+                    <span className="font-medium text-sm group-hover:text-primary transition-colors">Falha de login após atualização</span>
                   </div>
                   <div className="text-xs text-muted-foreground ml-6">Resolvido em 45min | 94% de correspondência</div>
                 </div>

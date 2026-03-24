@@ -54,7 +54,7 @@ export default function ChamadoChat() {
         ) : ticket ? (
           <div>
             <div className="flex items-start gap-3 flex-wrap">
-              <h1 className="text-3xl font-display font-bold text-foreground" data-testid="text-ticket-title">
+              <h1 className="text-3xl font-bold text-foreground" data-testid="text-ticket-title">
                 {ticket.title}
               </h1>
               <span className="text-muted-foreground font-mono text-sm mt-1">#{ticket.id}</span>
@@ -62,15 +62,15 @@ export default function ChamadoChat() {
             <div className="flex flex-wrap items-center gap-2 mt-3">
               <StatusBadge status={ticket.status} />
               <PriorityBadge priority={ticket.priority} />
-              <span className="text-xs text-muted-foreground bg-muted/50 px-2 py-0.5 rounded-full">{ticket.category}</span>
+              <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">{ticket.category}</span>
             </div>
           </div>
         ) : null}
       </div>
 
       <div className="max-w-3xl mx-auto">
-        <Card className="border-border/50">
-          <CardHeader className="border-b border-border/30 py-3 px-6">
+        <Card className="border-border">
+          <CardHeader className="border-b border-border py-3 px-6">
             <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Histórico de mensagens</p>
           </CardHeader>
           <CardContent className="p-0">
@@ -86,7 +86,7 @@ export default function ChamadoChat() {
                       </div>
                       <div className="max-w-[80%]">
                         <p className="text-xs text-muted-foreground mb-1">Descrição original</p>
-                        <div className="bg-card border border-border/50 rounded-xl px-4 py-3 text-sm text-foreground whitespace-pre-wrap">
+                        <div className="bg-card border border-border rounded-xl px-4 py-3 text-sm text-foreground whitespace-pre-wrap">
                           {ticket.description}
                         </div>
                       </div>
@@ -95,13 +95,13 @@ export default function ChamadoChat() {
 
                   {messages && messages.map((msg: any) => (
                     <div key={msg.id} className={`flex gap-3 ${msg.senderType === "user" ? "flex-row-reverse" : "flex-row"}`} data-testid={`message-${msg.id}`}>
-                      <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${msg.senderType === "user" ? "bg-secondary text-primary" : "bg-primary text-secondary"}`}>
+                      <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${msg.senderType === "user" ? "bg-primary text-secondary" : "bg-secondary text-white"}`}>
                         {msg.senderType === "user" ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
                       </div>
                       <div className={`max-w-[80%] ${msg.senderType === "user" ? "items-end" : "items-start"} flex flex-col gap-1`}>
                         <p className="text-xs text-muted-foreground">{msg.senderName}</p>
                         <div className={`rounded-xl px-4 py-3 text-sm whitespace-pre-wrap ${
-                          msg.senderType === "user" ? "bg-primary text-primary-foreground" : "bg-card border border-border/50 text-foreground"
+                          msg.senderType === "user" ? "bg-secondary text-white" : "bg-card border border-border text-foreground"
                         }`}>
                           {msg.message}
                         </div>
@@ -116,18 +116,18 @@ export default function ChamadoChat() {
               <div ref={bottomRef} />
             </div>
 
-            <div className="border-t border-border/50 p-4 flex gap-3">
+            <div className="border-t border-border p-4 flex gap-3">
               <Textarea
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 onKeyDown={handleKey}
                 placeholder="Digite sua mensagem... (Enter para enviar)"
-                className="resize-none border-border/50 bg-background/50 min-h-[48px] max-h-[120px]"
+                className="resize-none border-border bg-background min-h-[48px] max-h-[120px]"
                 rows={1}
                 disabled={sendMsg.isPending}
                 data-testid="input-message"
               />
-              <Button onClick={handleSend} disabled={sendMsg.isPending || !input.trim()} className="shrink-0" data-testid="button-send">
+              <Button onClick={handleSend} disabled={sendMsg.isPending || !input.trim()} className="shrink-0 rounded-lg" data-testid="button-send">
                 <Send className="w-4 h-4" />
               </Button>
             </div>

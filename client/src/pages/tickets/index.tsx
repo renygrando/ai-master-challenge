@@ -30,7 +30,7 @@ export default function TicketsList() {
     <AppLayout>
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
         <div>
-          <h1 className="text-4xl font-display font-bold text-foreground mb-2" data-testid="text-page-title">Chamados de Suporte</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-2" data-testid="text-page-title">Chamados de Suporte</h1>
           <p className="text-muted-foreground text-lg">Gerenciar e resolver solicitações de suporte.</p>
         </div>
         <CreateTicketDialog open={isDialogOpen} onOpenChange={setIsDialogOpen} />
@@ -79,7 +79,7 @@ export default function TicketsList() {
           ) : (
             filteredTickets?.map((ticket) => (
               <Link key={ticket.id} href={`/tickets/${ticket.id}`} className="block group" data-testid={`link-ticket-${ticket.id}`}>
-                <Card className="transition-all duration-200 hover-elevate border-border/50 cursor-pointer">
+                <Card className="transition-all duration-200 hover:shadow-md border-border cursor-pointer">
                   <CardContent className="p-5 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-3 mb-2 flex-wrap">
@@ -152,7 +152,7 @@ function CreateTicketDialog({ open, onOpenChange }: { open: boolean, onOpenChang
       </DialogTrigger>
       <DialogContent className="sm:max-w-[600px] border-secondary/20">
         <DialogHeader>
-          <DialogTitle className="font-display text-2xl text-foreground" data-testid="text-dialog-title">Criar Chamado de Suporte</DialogTitle>
+          <DialogTitle className="text-2xl font-bold text-foreground" data-testid="text-dialog-title">Criar Chamado de Suporte</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-6 pt-4">
           <div className="space-y-2">

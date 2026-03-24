@@ -27,7 +27,7 @@ export default function KnowledgeBase() {
   return (
     <AppLayout>
       <div className="flex flex-col items-center justify-center mb-12 mt-4">
-        <h1 className="text-4xl font-display font-bold text-foreground mb-4 text-center" data-testid="text-page-title">Biblioteca Atena</h1>
+        <h1 className="text-4xl font-bold text-foreground mb-4 text-center" data-testid="text-page-title">Base de Conhecimento</h1>
         <p className="text-muted-foreground text-lg text-center max-w-2xl mb-8">
           Repositório centralizado de conhecimento operacional. A IA sugere automaticamente estes artigos para resolver chamados.
         </p>
@@ -36,7 +36,7 @@ export default function KnowledgeBase() {
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5" />
           <Input 
             placeholder="Buscar nos arquivos..." 
-            className="pl-12 h-14 text-lg border-border/50 bg-card/80 backdrop-blur-sm rounded-full focus-visible:ring-secondary"
+            className="pl-12 h-14 text-lg border-border bg-card rounded-xl focus-visible:ring-primary"
             value={search}
             onChange={e => setSearch(e.target.value)}
             data-testid="input-search-knowledge"
@@ -46,10 +46,10 @@ export default function KnowledgeBase() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filtered.map((article) => (
-          <Card key={article.id} className="group hover-elevate transition-colors cursor-pointer border-border/50 bg-card" data-testid={`card-article-${article.id}`}>
+          <Card key={article.id} className="group hover:shadow-md transition-shadow cursor-pointer border-border bg-card" data-testid={`card-article-${article.id}`}>
             <CardHeader className="pb-3">
               <div className="flex justify-between items-start gap-2 mb-2 flex-wrap">
-                <span className="text-[10px] font-semibold uppercase tracking-widest text-secondary bg-secondary/10 px-2 py-1 rounded-md" data-testid={`text-article-category-${article.id}`}>
+                <span className="text-[10px] font-semibold uppercase tracking-widest text-primary bg-primary/10 px-2 py-1 rounded-md" data-testid={`text-article-category-${article.id}`}>
                   {article.category}
                 </span>
                 <Book className="w-4 h-4 text-muted-foreground" />
@@ -61,7 +61,7 @@ export default function KnowledgeBase() {
             <CardContent>
               <div className="flex justify-between items-center mt-2 gap-2">
                 <span className="text-sm text-muted-foreground" data-testid={`text-article-views-${article.id}`}>{article.views} visualizações</span>
-                <ArrowRight className="w-4 h-4 text-muted-foreground invisible group-hover:visible text-secondary" />
+                <ArrowRight className="w-4 h-4 text-muted-foreground invisible group-hover:visible text-primary" />
               </div>
             </CardContent>
           </Card>

@@ -19,14 +19,14 @@ export default function Analytics() {
   return (
     <AppLayout>
       <div className="mb-8">
-        <h1 className="text-4xl font-display font-bold text-foreground mb-2" data-testid="text-page-title">Analytics Executivo</h1>
+        <h1 className="text-4xl font-bold text-foreground mb-2" data-testid="text-page-title">Analytics Executivo</h1>
         <p className="text-muted-foreground text-lg">Análise aprofundada do desempenho da organização de suporte.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <Card className="border-border/50">
+        <Card className="border-border">
           <CardHeader>
-            <CardTitle className="font-display text-xl text-foreground" data-testid="text-chart-title-performance">Matriz de Desempenho da Equipe</CardTitle>
+            <CardTitle className="text-xl text-foreground" data-testid="text-chart-title-performance">Matriz de Desempenho da Equipe</CardTitle>
             <CardDescription>Velocidade de resolução vs pontuação de qualidade</CardDescription>
           </CardHeader>
           <CardContent>
@@ -37,17 +37,17 @@ export default function Analytics() {
                   <XAxis dataKey="day" stroke="hsl(var(--muted-foreground))" tickLine={false} axisLine={false} />
                   <YAxis stroke="hsl(var(--muted-foreground))" domain={[70, 100]} tickLine={false} axisLine={false} />
                   <Tooltip contentStyle={{ borderRadius: '8px' }} />
-                  <Line type="monotone" dataKey="speed" stroke="hsl(var(--primary))" strokeWidth={3} dot={{ r: 4 }} name="Velocidade" />
-                  <Line type="monotone" dataKey="quality" stroke="hsl(var(--secondary))" strokeWidth={3} dot={{ r: 4 }} name="Qualidade" />
+                  <Line type="monotone" dataKey="speed" stroke="hsl(var(--secondary))" strokeWidth={3} dot={{ r: 4 }} name="Velocidade" />
+                  <Line type="monotone" dataKey="quality" stroke="hsl(var(--primary))" strokeWidth={3} dot={{ r: 4 }} name="Qualidade" />
                 </LineChart>
               </ResponsiveContainer>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="border-border/50">
+        <Card className="border-border">
           <CardHeader>
-            <CardTitle className="font-display text-xl text-foreground" data-testid="text-chart-title-deflection">Taxa de Deflexão da IA</CardTitle>
+            <CardTitle className="text-xl text-foreground" data-testid="text-chart-title-deflection">Taxa de Deflexão da IA</CardTitle>
             <CardDescription>Percentual de chamados resolvidos sem intervenção humana</CardDescription>
           </CardHeader>
           <CardContent className="flex items-center justify-center flex-col h-[300px]">
@@ -56,14 +56,14 @@ export default function Analytics() {
                 <circle
                   cx="96" cy="96" r="88"
                   fill="none"
-                  stroke="hsl(var(--secondary))"
+                  stroke="hsl(var(--primary))"
                   strokeWidth="16"
                   strokeDasharray={`${(metrics?.automationRate || 68) * 5.53} 553`}
                   className="transition-all duration-1000 ease-out"
                 />
               </svg>
               <div className="text-center">
-                <div className="text-5xl font-display font-bold text-foreground" data-testid="text-deflection-rate">{metrics?.automationRate || 68}%</div>
+                <div className="text-5xl font-bold text-foreground" data-testid="text-deflection-rate">{metrics?.automationRate || 68}%</div>
                 <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider mt-1">Deflectido</div>
               </div>
             </div>

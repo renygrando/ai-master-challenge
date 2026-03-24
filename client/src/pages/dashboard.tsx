@@ -22,7 +22,7 @@ export default function Dashboard() {
     return (
       <AppLayout>
         <div className="flex h-64 items-center justify-center">
-          <div className="animate-spin w-8 h-8 border-4 border-secondary border-t-transparent rounded-full"></div>
+          <div className="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full"></div>
         </div>
       </AppLayout>
     );
@@ -44,7 +44,7 @@ export default function Dashboard() {
   return (
     <AppLayout>
       <div className="mb-8">
-        <h1 className="text-4xl font-display font-bold text-foreground mb-2" data-testid="text-page-title">Inteligência Operacional</h1>
+        <h1 className="text-4xl font-bold text-foreground mb-2" data-testid="text-page-title">Inteligência Operacional</h1>
         <p className="text-muted-foreground text-lg">Métricas do sistema e desempenho da IA em tempo real.</p>
       </div>
 
@@ -79,9 +79,9 @@ export default function Dashboard() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-        <Card className="lg:col-span-2 border-border/50">
+        <Card className="lg:col-span-2 border-border">
           <CardHeader>
-            <CardTitle className="font-display text-xl text-foreground" data-testid="text-chart-title-trend">Volume e Tendência de Resolução</CardTitle>
+            <CardTitle className="text-xl text-foreground" data-testid="text-chart-title-trend">Volume e Tendência de Resolução</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="h-[300px] w-full">
@@ -89,29 +89,29 @@ export default function Dashboard() {
                 <AreaChart data={trendData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                   <defs>
                     <linearGradient id="colorVolume" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.3}/>
-                      <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0}/>
-                    </linearGradient>
-                    <linearGradient id="colorResolved" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="5%" stopColor="hsl(var(--secondary))" stopOpacity={0.3}/>
                       <stop offset="95%" stopColor="hsl(var(--secondary))" stopOpacity={0}/>
+                    </linearGradient>
+                    <linearGradient id="colorResolved" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.3}/>
+                      <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0}/>
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
                   <XAxis dataKey="time" stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} />
                   <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} />
                   <Tooltip contentStyle={{ backgroundColor: 'hsl(var(--card))', borderRadius: '8px', border: '1px solid hsl(var(--border))' }} />
-                  <Area type="monotone" dataKey="volume" stroke="hsl(var(--primary))" strokeWidth={2} fillOpacity={1} fill="url(#colorVolume)" name="Recebidos" />
-                  <Area type="monotone" dataKey="resolved" stroke="hsl(var(--secondary))" strokeWidth={2} fillOpacity={1} fill="url(#colorResolved)" name="Resolvidos" />
+                  <Area type="monotone" dataKey="volume" stroke="hsl(var(--secondary))" strokeWidth={2} fillOpacity={1} fill="url(#colorVolume)" name="Recebidos" />
+                  <Area type="monotone" dataKey="resolved" stroke="hsl(var(--primary))" strokeWidth={2} fillOpacity={1} fill="url(#colorResolved)" name="Resolvidos" />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="border-border/50">
+        <Card className="border-border">
           <CardHeader>
-            <CardTitle className="font-display text-xl text-foreground" data-testid="text-chart-title-category">Distribuição por Categoria</CardTitle>
+            <CardTitle className="text-xl text-foreground" data-testid="text-chart-title-category">Distribuição por Categoria</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="h-[300px] w-full">
@@ -121,7 +121,7 @@ export default function Dashboard() {
                   <XAxis type="number" hide />
                   <YAxis dataKey="name" type="category" stroke="hsl(var(--foreground))" fontSize={11} tickLine={false} axisLine={false} width={80} />
                   <Tooltip cursor={{fill: 'hsl(var(--muted))'}} contentStyle={{ borderRadius: '8px' }} />
-                  <Bar dataKey="value" fill="hsl(var(--secondary))" radius={[0, 4, 4, 0]} barSize={18} />
+                  <Bar dataKey="value" fill="hsl(var(--primary))" radius={[0, 4, 4, 0]} barSize={18} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -130,10 +130,10 @@ export default function Dashboard() {
       </div>
 
       {metrics?.bottlenecks && metrics.bottlenecks.length > 0 && (
-        <Card className="border-border/50 relative">
-          <div className="absolute top-0 left-0 w-1 h-full bg-destructive rounded-l-md"></div>
+        <Card className="border-border relative">
+          <div className="absolute top-0 left-0 w-1 h-full bg-destructive rounded-l-lg"></div>
           <CardHeader>
-            <CardTitle className="font-display text-xl text-foreground flex items-center gap-2" data-testid="text-bottlenecks-title">
+            <CardTitle className="text-xl text-foreground flex items-center gap-2" data-testid="text-bottlenecks-title">
               <AlertTriangle className="w-5 h-5 text-destructive" />
               Gargalos e Riscos do Sistema
             </CardTitle>
@@ -141,12 +141,12 @@ export default function Dashboard() {
           <CardContent>
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-left" data-testid="table-bottlenecks">
-                <thead className="text-xs uppercase bg-muted/50 text-muted-foreground border-b border-border/50">
+                <thead className="text-xs uppercase bg-muted/50 text-muted-foreground border-b border-border">
                   <tr>
-                    <th className="px-4 py-3 rounded-tl-md font-semibold tracking-wider">Categoria</th>
+                    <th className="px-4 py-3 rounded-tl-lg font-semibold tracking-wider">Categoria</th>
                     <th className="px-4 py-3 font-semibold tracking-wider">Volume</th>
                     <th className="px-4 py-3 font-semibold tracking-wider">Atraso Médio (h)</th>
-                    <th className="px-4 py-3 rounded-tr-md font-semibold tracking-wider">Risco</th>
+                    <th className="px-4 py-3 rounded-tr-lg font-semibold tracking-wider">Risco</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -157,8 +157,8 @@ export default function Dashboard() {
                       <td className="px-4 py-4">{b.avgResolution}</td>
                       <td className="px-4 py-4">
                         <div className="flex items-center gap-2">
-                          <div className="w-24 h-2 bg-secondary/20 rounded-full overflow-hidden">
-                            <div className={`h-full rounded-full ${b.riskScore > 0.7 ? 'bg-destructive' : 'bg-secondary'}`} style={{ width: `${b.riskScore * 100}%` }}></div>
+                          <div className="w-24 h-2 bg-muted rounded-full overflow-hidden">
+                            <div className={`h-full rounded-full ${b.riskScore > 0.7 ? 'bg-destructive' : 'bg-primary'}`} style={{ width: `${b.riskScore * 100}%` }}></div>
                           </div>
                           <span className="text-xs font-semibold" data-testid={`text-risk-score-${i}`}>{(b.riskScore * 10).toFixed(1)}</span>
                         </div>

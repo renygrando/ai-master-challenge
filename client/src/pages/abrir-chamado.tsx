@@ -44,7 +44,6 @@ export default function AbrirChamado() {
       setMessages(prev => [...prev, { role: "assistant", content: data.reply }]);
 
       if (data.ticketData) {
-        // Create the ticket
         const ticketRes = await apiRequest("POST", "/api/tickets", {
           ...data.ticketData,
           status: "Aberto",
@@ -74,13 +73,13 @@ export default function AbrirChamado() {
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-100 dark:bg-emerald-900/40 mb-6">
             <CheckCircle className="w-10 h-10 text-emerald-600 dark:text-emerald-400" />
           </div>
-          <h1 className="text-3xl font-display font-bold text-foreground mb-3">Chamado Aberto!</h1>
+          <h1 className="text-3xl font-bold text-foreground mb-3">Chamado Aberto!</h1>
           <p className="text-muted-foreground mb-8">Seu chamado <span className="font-bold text-foreground">#{ticketCreated}</span> foi registrado com sucesso. Nossa equipe de suporte entrará em contato em breve.</p>
           <div className="flex gap-3 justify-center">
-            <Button onClick={() => setLocation(`/chamado/${ticketCreated}`)} data-testid="button-view-ticket">
+            <Button onClick={() => setLocation(`/chamado/${ticketCreated}`)} className="rounded-lg" data-testid="button-view-ticket">
               Ver chamado
             </Button>
-            <Button variant="outline" onClick={() => setLocation("/meus-chamados")} data-testid="button-my-tickets">
+            <Button variant="outline" onClick={() => setLocation("/meus-chamados")} className="rounded-lg" data-testid="button-my-tickets">
               Meus chamados
             </Button>
           </div>
@@ -92,24 +91,23 @@ export default function AbrirChamado() {
   return (
     <AppLayout>
       <div className="mb-6">
-        <h1 className="text-4xl font-display font-bold text-foreground mb-2" data-testid="text-page-title">Abrir Chamado</h1>
+        <h1 className="text-4xl font-bold text-foreground mb-2" data-testid="text-page-title">Abrir Chamado</h1>
         <p className="text-muted-foreground">Converse com nosso assistente de IA para registrar seu chamado de suporte.</p>
       </div>
 
       <div className="max-w-3xl mx-auto">
-        <Card className="border-border/50">
+        <Card className="border-border">
           <CardContent className="p-0">
-            {/* Chat messages */}
             <div className="h-[480px] overflow-y-auto p-6 space-y-4">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex gap-3 ${msg.role === "user" ? "flex-row-reverse" : "flex-row"}`}>
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${msg.role === "assistant" ? "bg-primary text-secondary" : "bg-secondary text-primary"}`}>
+                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${msg.role === "assistant" ? "bg-secondary text-white" : "bg-primary text-secondary"}`}>
                     {msg.role === "assistant" ? <Bot className="w-4 h-4" /> : <User className="w-4 h-4" />}
                   </div>
                   <div className={`max-w-[80%] rounded-xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${
                     msg.role === "assistant"
-                      ? "bg-card border border-border/50 text-foreground"
-                      : "bg-primary text-primary-foreground"
+                      ? "bg-card border border-border text-foreground"
+                      : "bg-secondary text-white"
                   }`} data-testid={`message-${msg.role}-${i}`}>
                     {msg.content}
                   </div>
@@ -117,10 +115,10 @@ export default function AbrirChamado() {
               ))}
               {loading && (
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-primary text-secondary">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-secondary text-white">
                     <Bot className="w-4 h-4" />
                   </div>
-                  <div className="bg-card border border-border/50 rounded-xl px-4 py-3">
+                  <div className="bg-card border border-border rounded-xl px-4 py-3">
                     <div className="flex gap-1">
                       <span className="w-2 h-2 bg-muted-foreground/50 rounded-full animate-bounce" style={{ animationDelay: "0ms" }}></span>
                       <span className="w-2 h-2 bg-muted-foreground/50 rounded-full animate-bounce" style={{ animationDelay: "150ms" }}></span>
@@ -132,19 +130,18 @@ export default function AbrirChamado() {
               <div ref={bottomRef} />
             </div>
 
-            {/* Input */}
-            <div className="border-t border-border/50 p-4 flex gap-3">
+            <div className="border-t border-border p-4 flex gap-3">
               <Textarea
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 onKeyDown={handleKey}
                 placeholder="Descreva seu problema... (Enter para enviar)"
-                className="resize-none border-border/50 bg-background/50 min-h-[48px] max-h-[120px]"
+                className="resize-none border-border bg-background min-h-[48px] max-h-[120px]"
                 rows={1}
                 disabled={loading}
                 data-testid="input-chat-message"
               />
-              <Button onClick={sendMessage} disabled={loading || !input.trim()} className="shrink-0" data-testid="button-send-message">
+              <Button onClick={sendMessage} disabled={loading || !input.trim()} className="shrink-0 rounded-lg" data-testid="button-send-message">
                 <Send className="w-4 h-4" />
               </Button>
             </div>

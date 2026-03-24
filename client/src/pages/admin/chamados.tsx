@@ -32,12 +32,11 @@ export default function AdminChamados() {
   return (
     <AppLayout>
       <div className="mb-8">
-        <h1 className="text-4xl font-display font-bold text-foreground mb-2" data-testid="text-page-title">Gerenciar Chamados</h1>
+        <h1 className="text-4xl font-bold text-foreground mb-2" data-testid="text-page-title">Gerenciar Chamados</h1>
         <p className="text-muted-foreground">Visualize e gerencie todos os chamados de suporte.</p>
       </div>
 
-      {/* Filters */}
-      <Card className="border-border/50 mb-6">
+      <Card className="border-border mb-6">
         <CardContent className="p-4 flex flex-wrap gap-3">
           <div className="relative flex-1 min-w-[200px]">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -45,12 +44,12 @@ export default function AdminChamados() {
               placeholder="Buscar chamados..."
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="pl-9 border-border/50"
+              className="pl-9 border-border"
               data-testid="input-search"
             />
           </div>
           <Select value={statusFilter} onValueChange={setStatusFilter}>
-            <SelectTrigger className="w-44 border-border/50" data-testid="select-status">
+            <SelectTrigger className="w-44 border-border" data-testid="select-status">
               <Filter className="w-4 h-4 mr-2" />
               <SelectValue placeholder="Status" />
             </SelectTrigger>
@@ -59,7 +58,7 @@ export default function AdminChamados() {
             </SelectContent>
           </Select>
           <Select value={priorityFilter} onValueChange={setPriorityFilter}>
-            <SelectTrigger className="w-44 border-border/50" data-testid="select-priority">
+            <SelectTrigger className="w-44 border-border" data-testid="select-priority">
               <SelectValue placeholder="Prioridade" />
             </SelectTrigger>
             <SelectContent>
@@ -69,15 +68,14 @@ export default function AdminChamados() {
         </CardContent>
       </Card>
 
-      {/* Ticket list */}
-      <Card className="border-border/50">
+      <Card className="border-border">
         <CardHeader>
-          <CardTitle className="font-display text-lg">
+          <CardTitle className="text-lg">
             {isLoading ? "Carregando..." : `${filtered.length} chamado${filtered.length !== 1 ? "s" : ""}`}
           </CardTitle>
         </CardHeader>
         <CardContent className="p-0">
-          <div className="divide-y divide-border/30">
+          <div className="divide-y divide-border/50">
             {isLoading ? (
               [...Array(5)].map((_, i) => <Skeleton key={i} className="h-20 mx-6 my-3 rounded-lg" />)
             ) : filtered.length === 0 ? (
@@ -94,7 +92,7 @@ export default function AdminChamados() {
                     <div className="flex flex-wrap gap-2">
                       <StatusBadge status={ticket.status} />
                       <PriorityBadge priority={ticket.priority} />
-                      <span className="text-xs text-muted-foreground bg-muted/50 px-2 py-0.5 rounded-full">{ticket.category}</span>
+                      <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">{ticket.category}</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 shrink-0">
@@ -102,7 +100,7 @@ export default function AdminChamados() {
                       value={ticket.status}
                       onValueChange={value => updateTicket.mutate({ id: ticket.id, status: value })}
                     >
-                      <SelectTrigger className="w-36 h-8 text-xs border-border/50" data-testid={`select-status-${ticket.id}`}>
+                      <SelectTrigger className="w-36 h-8 text-xs border-border" data-testid={`select-status-${ticket.id}`}>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>

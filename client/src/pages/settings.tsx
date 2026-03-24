@@ -10,13 +10,13 @@ export default function Settings() {
     <AppLayout>
       <div className="max-w-3xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-4xl font-display font-bold text-foreground mb-2" data-testid="text-page-title">Configurações do Sistema</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-2" data-testid="text-page-title">Configurações do Sistema</h1>
           <p className="text-muted-foreground text-lg">Gerencie o comportamento do Hermes IA e regras operacionais.</p>
         </div>
 
-        <Card className="mb-6 border-border/50">
+        <Card className="mb-6 border-border">
           <CardHeader>
-            <CardTitle className="font-display text-xl text-foreground">Regras de Automação IA</CardTitle>
+            <CardTitle className="text-xl text-foreground">Regras de Automação IA</CardTitle>
             <CardDescription>Controle como a IA interage automaticamente com os chamados recebidos.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -55,8 +55,8 @@ export default function Settings() {
         </Card>
 
         <div className="flex justify-end gap-4">
-          <Button variant="outline" data-testid="button-discard-settings">Descartar Alterações</Button>
-          <Button data-testid="button-save-settings">Salvar Configurações</Button>
+          <Button variant="outline" className="rounded-lg" data-testid="button-discard-settings">Descartar Alterações</Button>
+          <Button className="rounded-lg" data-testid="button-save-settings">Salvar Configurações</Button>
         </div>
       </div>
     </AppLayout>

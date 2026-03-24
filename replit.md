@@ -1,7 +1,7 @@
 # Hermes - AI-Native IT Support Ticket System
 
 ## Overview
-Hermes is an AI-powered IT support ticketing platform that automates ticket classification, routing, and response suggestions. Inspired by the Greek god Hermes — messenger, negotiator, and guide between worlds.
+Hermes is an AI-powered IT support ticketing platform that automates ticket classification, routing, and response suggestions.
 
 ## Architecture
 - **Frontend**: React + TypeScript + Tailwind CSS + Shadcn UI + Recharts
@@ -9,12 +9,13 @@ Hermes is an AI-powered IT support ticketing platform that automates ticket clas
 - **Database**: PostgreSQL with Drizzle ORM
 - **AI**: OpenAI via Replit AI Integrations (gpt-5.1 for classification/suggestions)
 
-## Design System
-- Primary: Deep Emerald Green #0F3D2E
-- Secondary: Antique Gold #C8A44D
-- Background: Marble white #F4F1EA
-- Accent: Dark bronze #5A4633
-- Fonts: Playfair Display (headings) + Inter (body)
+## Design System (G4 Business Identity)
+- Primary (Gold): #B9915B / HSL 33 45% 54% — buttons, accents, active states
+- Secondary (Navy): #001F35 / HSL 204 100% 10% — sidebar, dark text, chat bubbles
+- Background: White #FFFFFF
+- Font: Manrope (headings + body, single font family)
+- Border Radius: 10px (lg/buttons), 5px (md/general)
+- Sidebar: Navy dark with gold accents for active items
 
 ## Key Features
 - **AI Ticket Classification**: Auto-categorizes tickets (Hardware, Access, HR Support, Storage, Purchase, Administrative rights, Internal Project, Misc)

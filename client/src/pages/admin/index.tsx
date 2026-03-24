@@ -17,11 +17,10 @@ export default function AdminDashboard() {
   return (
     <AppLayout>
       <div className="mb-8">
-        <h1 className="text-4xl font-display font-bold text-foreground mb-2" data-testid="text-page-title">Painel Administrativo</h1>
+        <h1 className="text-4xl font-bold text-foreground mb-2" data-testid="text-page-title">Painel Administrativo</h1>
         <p className="text-muted-foreground text-lg">Visão geral do suporte de TI em tempo real.</p>
       </div>
 
-      {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {metricsLoading ? (
           [...Array(4)].map((_, i) => <Skeleton key={i} className="h-36 rounded-xl" />)
@@ -35,16 +34,15 @@ export default function AdminDashboard() {
         )}
       </div>
 
-      {/* Recent tickets */}
-      <Card className="border-border/50">
+      <Card className="border-border">
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle className="font-display text-xl">Chamados Recentes</CardTitle>
-          <Link href="/admin/chamados" className="text-sm text-secondary hover:underline flex items-center gap-1" data-testid="link-all-tickets">
+          <CardTitle className="text-xl">Chamados Recentes</CardTitle>
+          <Link href="/admin/chamados" className="text-sm text-primary hover:underline flex items-center gap-1 font-medium" data-testid="link-all-tickets">
             Ver todos <ChevronRight className="w-4 h-4" />
           </Link>
         </CardHeader>
         <CardContent className="p-0">
-          <div className="divide-y divide-border/30">
+          <div className="divide-y divide-border/50">
             {ticketsLoading ? (
               [...Array(4)].map((_, i) => <Skeleton key={i} className="h-16 mx-6 my-3 rounded-lg" />)
             ) : recentTickets.length === 0 ? (
@@ -61,7 +59,7 @@ export default function AdminDashboard() {
                       <div className="flex flex-wrap gap-2">
                         <StatusBadge status={ticket.status} />
                         <PriorityBadge priority={ticket.priority} />
-                        <span className="text-xs text-muted-foreground bg-muted/50 px-2 py-0.5 rounded-full">{ticket.category}</span>
+                        <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">{ticket.category}</span>
                       </div>
                     </div>
                     <ChevronRight className="w-4 h-4 text-muted-foreground shrink-0" />
@@ -73,11 +71,10 @@ export default function AdminDashboard() {
         </CardContent>
       </Card>
 
-      {/* Category breakdown */}
       {metrics?.ticketsByCategory && Object.keys(metrics.ticketsByCategory).length > 0 && (
-        <Card className="border-border/50 mt-6">
+        <Card className="border-border mt-6">
           <CardHeader>
-            <CardTitle className="font-display text-xl">Distribuição por Categoria</CardTitle>
+            <CardTitle className="text-xl">Distribuição por Categoria</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
